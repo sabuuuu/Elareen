@@ -1,12 +1,125 @@
-function App() {
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { supabase } from './lib/supabase'
+import { AuthWrapper } from './components/layout/auth-wrapper'
+import { Footer } from './components/layout/footer'
+import { Navbar } from './components/layout/navbar'
+import { Toaster } from './components/ui/sonner'
+import { ComplaintsPage } from './pages/complaints-page'
+import { DashboardPage } from './pages/dashboard-page'
+import { DateIdeasPage } from './pages/date-ideas-page'
+import { LandingPage } from './pages/landing-page'
+import { LettersPage } from './pages/letters-page'
+import { LoginPage } from './pages/login-page'
+import { MemoriesPage } from './pages/memories-page'
+import { SetupPage } from './pages/setup-page'
+import { SignupPage } from './pages/signup-page'
+import { TimersPage } from './pages/timers-page'
 
+
+
+function PublicRoute({ children, isAuthenticated, isLoading }) {
+  if (isLoading) {
+    return <div className="flex items-center justify-center min-h-screen">Loading...</div>
+  }
+  
+  if (isAuthenticated) {
+    return <Navigate to="/dashboard" replace />
+  }
+  
+  return children
+}
+
+function App() {
+  const [user, setUser] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    // Get initial session
+    const getInitialSession = async () => {
+      const { data: { session } } = await supabase.auth.getSession()
+      setUser(session?.user ?? null)
+      setIsLoading(false)
+    }
+
+    getInitialSession()
+
+    // Listen for auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      async (event, session) => {
+        setUser(session?.user ?? null)
+        setIsLoading(false)
+      }
+    )
+
+    return () => subscription.unsubscribe()
+  }, [])
+
+  const isAuthenticated = !!user
 
   return (
-    <>
-      <h1 className="text-3xl font-bold">
-        Hello world!
-      </h1>
-    </>
+    <Router>
+      <div className="min-h-screen bg-gray-50 flex flex-col">
+        <Navbar />
+        <main className="flex-1">
+          <Routes>
+            <Route path="/" element={
+              <PublicRoute isAuthenticated={isAuthenticated} isLoading={isLoading}>
+                <LandingPage />
+              </PublicRoute>
+            } />
+            <Route path="/login" element={
+              <PublicRoute isAuthenticated={isAuthenticated} isLoading={isLoading}>
+                <LoginPage />
+              </PublicRoute>
+            } />
+            <Route path="/signup" element={
+              <PublicRoute isAuthenticated={isAuthenticated} isLoading={isLoading}>
+                <SignupPage />
+              </PublicRoute>
+            } />
+           
+            <Route path="/setup" element={
+              <AuthWrapper>
+                <SetupPage />
+              </AuthWrapper>
+            } />
+            <Route path="/dashboard" element={
+              <AuthWrapper>
+                <DashboardPage />
+              </AuthWrapper>
+            } />
+            <Route path="/letters" element={
+              <AuthWrapper>
+                <LettersPage />
+              </AuthWrapper>
+            } />
+            <Route path="/complaints" element={
+              <AuthWrapper>
+                <ComplaintsPage />
+              </AuthWrapper>
+            } />
+            <Route path="/memories" element={
+              <AuthWrapper>
+                <MemoriesPage />
+              </AuthWrapper>
+            } />
+            <Route path="/date-ideas" element={
+              <AuthWrapper>
+                <DateIdeasPage />
+              </AuthWrapper>
+            } />
+            <Route path="/timers" element={
+              <AuthWrapper>
+                <TimersPage />
+              </AuthWrapper>
+            } />
+          </Routes>
+        </main>
+        <Footer />
+        <Toaster />
+      </div>
+    </Router>
   )
 }
 
