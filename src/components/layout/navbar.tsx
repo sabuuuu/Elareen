@@ -230,7 +230,7 @@ export const NavbarButton = ({
   | React.ComponentPropsWithoutRef<"button">
 )) => {
   const baseStyles =
-    "px-5 py-2.5 rounded-full text-sm font-medium relative cursor-pointer   transition duration-200 inline-block text-center";
+    "glass-button-enhanced px-5 py-2.5 rounded-full text-sm font-medium relative cursor-pointer   transition duration-200 inline-block text-center";
 
   const variantStyles = {
     primary:
@@ -294,7 +294,7 @@ export function MoodHubNavbar() {
   ] : []
 
   return (
-    <Navbar className="fixed inset-x-0 top-0 z-40 w-full ">
+    <Navbar className=" fixed inset-x-0 top-0 z-40 w-full ">
       {/* Desktop Navigation */}
       <NavBody>
         <NavbarLogo />
@@ -367,7 +367,7 @@ export function MoodHubNavbar() {
             <div className="flex flex-col space-y-4 px-4 w-full">
               <Link to="/login" onClick={() => setIsMenuOpen(false)} className="w-full">
                 <Button 
-                  className="w-full rounded-sm bg-[#4C7934] hover:bg-[#235421]/90 text-[#091605]"
+                  className="glass-button-enhanced w-full rounded-sm bg-[#4C7934] hover:bg-[#235421]/90 text-[#091605]"
                 >
                   Get Started
                 </Button>

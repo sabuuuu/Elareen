@@ -7,36 +7,6 @@ import { Link } from 'react-router-dom'
 export default function LandingPage() {
   return (
     <div className="min-h-screen bg-[#091605] text-[#a7b1a3] relative overflow-hidden">
-
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-0 left-1/4 w-20 h-full bg-gradient-to-b from-[#4c7934]/40 via-[#4c7934]/15 to-transparent transform rotate-12 blur-3xl opacity-80"></div>
-        <div className="absolute top-0 left-1/4 w-8 h-full bg-gradient-to-b from-[#6b9d47]/60 via-[#6b9d47]/25 to-transparent transform rotate-12 blur-xl"></div>
-        
-        <div className="absolute top-0 right-1/3 w-16 h-full bg-gradient-to-b from-[#4c7934]/35 via-[#4c7934]/12 to-transparent transform -rotate-6 blur-2xl opacity-70"></div>
-        <div className="absolute top-0 right-1/3 w-6 h-full bg-gradient-to-b from-[#6b9d47]/50 via-[#6b9d47]/20 to-transparent transform -rotate-6 blur-lg"></div>
-        
-        <div className="absolute top-0 left-1/2 w-24 h-full bg-gradient-to-b from-[#4c7934]/45 via-[#4c7934]/18 to-transparent transform rotate-3 blur-3xl opacity-85"></div>
-        <div className="absolute top-0 left-1/2 w-10 h-full bg-gradient-to-b from-[#6b9d47]/70 via-[#6b9d47]/30 to-transparent transform rotate-3 blur-xl"></div>
-        
-        <div className="absolute top-0 right-1/4 w-18 h-full bg-gradient-to-b from-[#4c7934]/38 via-[#4c7934]/14 to-transparent transform -rotate-12 blur-2xl opacity-75"></div>
-        <div className="absolute top-0 right-1/4 w-7 h-full bg-gradient-to-b from-[#6b9d47]/55 via-[#6b9d47]/22 to-transparent transform -rotate-12 blur-lg"></div>
-        
-        <div className="absolute top-0 left-3/4 w-14 h-full bg-gradient-to-b from-[#4c7934]/32 via-[#4c7934]/10 to-transparent transform rotate-8 blur-2xl opacity-65"></div>
-        <div className="absolute top-0 left-3/4 w-5 h-full bg-gradient-to-b from-[#6b9d47]/45 via-[#6b9d47]/18 to-transparent transform rotate-8 blur-lg"></div>
-        
-
-        <div className="absolute top-0 left-1/6 w-12 h-2/3 bg-gradient-to-b from-[#4c7934]/30 via-[#4c7934]/8 to-transparent transform rotate-15 blur-xl opacity-60"></div>
-        <div className="absolute top-0 right-1/6 w-16 h-3/4 bg-gradient-to-b from-[#4c7934]/28 via-[#4c7934]/7 to-transparent transform -rotate-9 blur-2xl opacity-55"></div>
-        <div className="absolute top-0 left-2/3 w-10 h-1/2 bg-gradient-to-b from-[#4c7934]/25 via-[#4c7934]/6 to-transparent transform rotate-20 blur-xl opacity-50"></div>
-
-        <div className="absolute top-0 left-1/3 w-8 h-4/5 bg-gradient-to-b from-[#8bc34a]/30 via-[#8bc34a]/10 to-transparent transform rotate-25 blur-lg opacity-40"></div>
-        <div className="absolute top-0 right-2/3 w-12 h-3/5 bg-gradient-to-b from-[#8bc34a]/25 via-[#8bc34a]/8 to-transparent transform -rotate-18 blur-xl opacity-35"></div>
-      </div>
-      
-      <div className="absolute inset-0 bg-gradient-to-br from-[#235421]/8 via-transparent to-[#4c7934]/8"></div>
-      <div className="absolute inset-0 bg-gradient-radial from-[#4c7934]/5 via-transparent to-transparent"></div>
-
-      {/* Hero Section with Background */}
       <section className="relative min-h-screen flex items-center justify-center px-4">
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/50"></div>
         <div 
@@ -46,7 +16,6 @@ export default function LandingPage() {
           }}
         ></div>
         
-        {/* Centered Hero Content */}
         <div className="relative z-10 max-w-4xl mx-auto text-center">
 
           <h1 className="text-5xl md:text-7xl font-semibold mb-8 md:mt-40  text-white drop-shadow-lg">
@@ -60,9 +29,12 @@ export default function LandingPage() {
           </p>
           <Link to='login'>
             <Button size="lg" 
-              className="cursor-pointer text-lg px-12 py-6 bg-[#12350B]/80 border border-[#4C7934]/50 hover:border-[#12350B]/90  text-[#A7B1A3] hover:bg-[#4c7934]/10 rounded-xl transition-all duration-300 backdrop-blur-sm">
-              Plant Your Garden
-              <Sparkles className="ml-2 h-6 w-6 hover:rotate-12 transition-transform" />
+              className="glass-button-enhanced cursor-pointer text-lg px-12 py-6 text-[#A7B1A3] hover:text-white rounded-xl transition-all duration-300 group relative overflow-hidden">
+              <div className="liquid-highlight"></div>
+              <span className="relative flex items-center z-10">
+                Plant Your Garden
+                <Sparkles className="ml-2 h-6 w-6 group-hover:rotate-12 transition-transform duration-300" />
+              </span>
             </Button>
           </Link>
         </div>
@@ -81,10 +53,11 @@ export default function LandingPage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="bg-gradient-to-br from-[#0d1f08]/80 to-[#11210a]/60 border-2 border-[#235421]/80 hover:border-[#6b9d47]/60 transition-all duration-500 rounded-3xl hover:shadow-2xl hover:shadow-[#4c7934]/20 group backdrop-blur-lg relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#4c7934]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <Card className="glass-card rounded-3xl hover:shadow-2xl hover:shadow-[#4c7934]/20 group relative overflow-hidden transition-all duration-500 hover:scale-105">
+              <div className="liquid-highlight"></div>
               <CardHeader className="text-center p-8 relative z-10">
                 <div className="mb-6 relative">
+                  <div className="absolute inset-0 bg-[#6b9d47]/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <MessageCircle className="h-10 w-10 text-[#6b9d47] mx-auto group-hover:scale-110 transition-transform duration-300 relative z-10" />
                 </div>
                 <CardTitle className="text-white text-xl font-medium mb-3">
@@ -96,10 +69,11 @@ export default function LandingPage() {
               </CardHeader>
             </Card>
 
-            <Card className="bg-gradient-to-br from-[#0d1f08]/80 to-[#11210a]/60 border-2 border-[#235421]/80 hover:border-[#6b9d47]/60 transition-all duration-500 rounded-3xl hover:shadow-2xl hover:shadow-[#4c7934]/20 group backdrop-blur-lg relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#4c7934]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <Card className="glass-card rounded-3xl hover:shadow-2xl hover:shadow-[#4c7934]/20 group relative overflow-hidden transition-all duration-500 hover:scale-105">
+              <div className="liquid-highlight"></div>
               <CardHeader className="text-center p-8 relative z-10">
                 <div className="mb-6 relative">
+                  <div className="absolute inset-0 bg-[#6b9d47]/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <Camera className="h-10 w-10 text-[#6b9d47] mx-auto group-hover:scale-110 transition-transform duration-300 relative z-10" />
                 </div>
                 <CardTitle className="text-white text-xl font-medium mb-3">
@@ -111,10 +85,11 @@ export default function LandingPage() {
               </CardHeader>
             </Card>
 
-            <Card className="bg-gradient-to-br from-[#0d1f08]/80 to-[#11210a]/60 border-2 border-[#235421]/80 hover:border-[#6b9d47]/60 transition-all duration-500 rounded-3xl hover:shadow-2xl hover:shadow-[#4c7934]/20 group backdrop-blur-lg relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#4c7934]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <Card className="glass-card rounded-3xl hover:shadow-2xl hover:shadow-[#4c7934]/20 group relative overflow-hidden transition-all duration-500 hover:scale-105">
+              <div className="liquid-highlight"></div>
               <CardHeader className="text-center p-8 relative z-10">
                 <div className="mb-6 relative">
+                  <div className="absolute inset-0 bg-[#6b9d47]/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <Calendar className="h-10 w-10 text-[#6b9d47] mx-auto group-hover:scale-110 transition-transform duration-300 relative z-10" />
                 </div>
                 <CardTitle className="text-white text-xl font-medium mb-3">
@@ -126,10 +101,11 @@ export default function LandingPage() {
               </CardHeader>
             </Card>
 
-            <Card className="bg-gradient-to-br from-[#0d1f08]/80 to-[#11210a]/60 border-2 border-[#235421]/80 hover:border-[#6b9d47]/60 transition-all duration-500 rounded-3xl hover:shadow-2xl hover:shadow-[#4c7934]/20 group backdrop-blur-lg relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#4c7934]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <Card className="glass-card rounded-3xl hover:shadow-2xl hover:shadow-[#4c7934]/20 group relative overflow-hidden transition-all duration-500 hover:scale-105">
+              <div className="liquid-highlight"></div>
               <CardHeader className="text-center p-8 relative z-10">
                 <div className="mb-6 relative">
+                  <div className="absolute inset-0 bg-[#6b9d47]/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <Timer className="h-10 w-10 text-[#6b9d47] mx-auto group-hover:scale-110 transition-transform duration-300 relative z-10" />
                 </div>
                 <CardTitle className="text-white text-xl font-medium mb-3">
@@ -141,10 +117,11 @@ export default function LandingPage() {
               </CardHeader>
             </Card>
 
-            <Card className="bg-gradient-to-br from-[#0d1f08]/80 to-[#11210a]/60 border-2 border-[#235421]/80 hover:border-[#6b9d47]/60 transition-all duration-500 rounded-3xl hover:shadow-2xl hover:shadow-[#4c7934]/20 group backdrop-blur-lg relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#4c7934]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <Card className="glass-card rounded-3xl hover:shadow-2xl hover:shadow-[#4c7934]/20 group relative overflow-hidden transition-all duration-500 hover:scale-105">
+              <div className="liquid-highlight"></div>
               <CardHeader className="text-center p-8 relative z-10">
                 <div className="mb-6 relative">
+                  <div className="absolute inset-0 bg-[#6b9d47]/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <Heart className="h-10 w-10 text-[#6b9d47] mx-auto group-hover:scale-110 transition-transform duration-300 relative z-10" />
                 </div>
                 <CardTitle className="text-white text-xl font-medium mb-3">
@@ -156,10 +133,11 @@ export default function LandingPage() {
               </CardHeader>
             </Card>
 
-            <Card className="bg-gradient-to-br from-[#0d1f08]/80 to-[#11210a]/60 border-2 border-[#235421]/80 hover:border-[#6b9d47]/60 transition-all duration-500 rounded-3xl hover:shadow-2xl hover:shadow-[#4c7934]/20 group backdrop-blur-lg relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#4c7934]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <Card className="glass-card rounded-3xl hover:shadow-2xl hover:shadow-[#4c7934]/20 group relative overflow-hidden transition-all duration-500 hover:scale-105">
+              <div className="liquid-highlight"></div>
               <CardHeader className="text-center p-8 relative z-10">
                 <div className="mb-6 relative">
+                  <div className="absolute inset-0 bg-[#6b9d47]/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <Users className="h-10 w-10 text-[#6b9d47] mx-auto group-hover:scale-110 transition-transform duration-300 relative z-10" />
                 </div>
                 <CardTitle className="text-white text-xl font-medium mb-3">
@@ -174,7 +152,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Enhanced CTA Section */}
+      {/* CTA Section */}
       <section className="py-20 px-4 mb-10 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#4c7934]/5 to-transparent"></div>
         <div className="max-w-4xl mx-auto text-center relative z-10">
@@ -196,11 +174,11 @@ export default function LandingPage() {
           
           <div className="space-y-4">
             <Button size="lg" 
-                    className="bg-gradient-to-r from-[#4c7934] via-[#6b9d47] to-[#8bc34a] hover:from-[#235421] hover:via-[#4c7934] hover:to-[#6b9d47] text-white text-xl px-16 py-6 rounded-2xl font-medium transition-all duration-500 group shadow-2xl hover:shadow-[#6b9d47]/40 relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
-              <span className="relative flex items-center">
+              className="glass-button-enhanced cursor-pointer text-lg px-12 py-6 text-[#A7B1A3] hover:text-white rounded-xl transition-all duration-300 group relative overflow-hidden">
+              <div className="liquid-highlight"></div>
+              <span className="relative flex items-center z-10">
                 Create Your Garden
-                <Heart className="ml-3 h-6 w-6 fill-current group-hover:scale-125 transition-transform duration-300" />
+                <Heart className="ml-3 h-6 w-6 fill-current group-hover:scale-110 transition-transform duration-300" />
               </span>
             </Button>
             
