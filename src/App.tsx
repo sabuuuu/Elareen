@@ -3,18 +3,18 @@ import { useState, useEffect } from 'react'
 import { supabase } from './lib/supabase'
 import { AuthWrapper } from './components/layout/auth-wrapper'
 import { Footer } from './components/layout/footer'
-import { Navbar } from './components/layout/navbar'
 import { Toaster } from './components/ui/sonner'
 import { ComplaintsPage } from './pages/complaints-page'
 import { DashboardPage } from './pages/dashboard-page'
 import { DateIdeasPage } from './pages/date-ideas-page'
-import { LandingPage } from './pages/landing-page'
 import { LettersPage } from './pages/letters-page'
 import { LoginPage } from './pages/login-page'
 import { MemoriesPage } from './pages/memories-page'
 import { SetupPage } from './pages/setup-page'
 import { SignupPage } from './pages/signup-page'
 import { TimersPage } from './pages/timers-page'
+import LandingPage from './pages/landing-page'
+import { MoodHubNavbar } from './components/layout/navbar'
 
 
 
@@ -60,7 +60,7 @@ function App() {
   return (
     <Router>
       <div className="min-h-screen bg-gray-50 flex flex-col">
-        <Navbar />
+        <MoodHubNavbar />
         <main className="flex-1">
           <Routes>
             <Route path="/" element={

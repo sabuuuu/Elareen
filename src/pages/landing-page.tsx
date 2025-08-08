@@ -1,254 +1,217 @@
-import { Heart, Users, Camera, MessageCircle, Calendar, Timer, Sparkles, Moon, Star } from 'lucide-react'
+import { Heart, Users, Camera, MessageCircle, Calendar, Timer, Sparkles } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { Card,CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import Background from '@/assets/images/bg.png'
 import { Link } from 'react-router-dom'
 
-export function LandingPage() {
+export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-[#0b0f0c] text-[#d3e6dc] relative overflow-hidden">
-      {/* Magical Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/20 via-transparent to-green-900/20"></div>
-      
-      {/* Floating Magical Particles */}
-      <div className="absolute top-10 left-10 animate-pulse opacity-40">
-        <Sparkles className="h-4 w-4 text-[#3fffa1]" />
-      </div>
-      <div className="absolute top-32 right-16 animate-pulse opacity-30 delay-1000">
-        <Star className="h-3 w-3 text-[#e6c96b]" />
-      </div>
-      <div className="absolute top-64 left-1/4 animate-pulse opacity-40 delay-2000">
-        <Moon className="h-5 w-5 text-[#7c998a]" />
-      </div>
-      <div className="absolute bottom-32 right-10 animate-pulse opacity-30 delay-500">
-        <Sparkles className="h-6 w-6 text-[#3fffa1]" />
-      </div>
-      <div className="absolute bottom-64 left-20 animate-pulse opacity-40 delay-1500">
-        <Star className="h-4 w-4 text-[#e6c96b]" />
-      </div>
+    <div className="min-h-screen bg-[#091605] text-[#a7b1a3] relative overflow-hidden">
 
-      {/* Hero Section */}
-      <section className="relative py-20 px-4">
-        <div className="max-w-6xl mx-auto text-center">
-          <div className="mb-8">
-            <div className="relative inline-block">
-              <Heart className="h-16 w-16 text-[#3fffa1] mx-auto mb-6 animate-pulse drop-shadow-2xl shadow-[#3fffa1]/40" />
-              <div className="absolute -top-2 -right-2">
-                <Sparkles className="h-6 w-6 text-[#e6c96b] animate-spin" />
-              </div>
-            </div>
-          </div>
-          
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            Your Mystical
-            <span className="text-[#3fffa1] block drop-shadow-2xl shadow-[#3fffa1]/30">
-              Love Portal
-            </span>
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-0 left-1/4 w-20 h-full bg-gradient-to-b from-[#4c7934]/40 via-[#4c7934]/15 to-transparent transform rotate-12 blur-3xl opacity-80"></div>
+        <div className="absolute top-0 left-1/4 w-8 h-full bg-gradient-to-b from-[#6b9d47]/60 via-[#6b9d47]/25 to-transparent transform rotate-12 blur-xl"></div>
+        
+        <div className="absolute top-0 right-1/3 w-16 h-full bg-gradient-to-b from-[#4c7934]/35 via-[#4c7934]/12 to-transparent transform -rotate-6 blur-2xl opacity-70"></div>
+        <div className="absolute top-0 right-1/3 w-6 h-full bg-gradient-to-b from-[#6b9d47]/50 via-[#6b9d47]/20 to-transparent transform -rotate-6 blur-lg"></div>
+        
+        <div className="absolute top-0 left-1/2 w-24 h-full bg-gradient-to-b from-[#4c7934]/45 via-[#4c7934]/18 to-transparent transform rotate-3 blur-3xl opacity-85"></div>
+        <div className="absolute top-0 left-1/2 w-10 h-full bg-gradient-to-b from-[#6b9d47]/70 via-[#6b9d47]/30 to-transparent transform rotate-3 blur-xl"></div>
+        
+        <div className="absolute top-0 right-1/4 w-18 h-full bg-gradient-to-b from-[#4c7934]/38 via-[#4c7934]/14 to-transparent transform -rotate-12 blur-2xl opacity-75"></div>
+        <div className="absolute top-0 right-1/4 w-7 h-full bg-gradient-to-b from-[#6b9d47]/55 via-[#6b9d47]/22 to-transparent transform -rotate-12 blur-lg"></div>
+        
+        <div className="absolute top-0 left-3/4 w-14 h-full bg-gradient-to-b from-[#4c7934]/32 via-[#4c7934]/10 to-transparent transform rotate-8 blur-2xl opacity-65"></div>
+        <div className="absolute top-0 left-3/4 w-5 h-full bg-gradient-to-b from-[#6b9d47]/45 via-[#6b9d47]/18 to-transparent transform rotate-8 blur-lg"></div>
+        
+
+        <div className="absolute top-0 left-1/6 w-12 h-2/3 bg-gradient-to-b from-[#4c7934]/30 via-[#4c7934]/8 to-transparent transform rotate-15 blur-xl opacity-60"></div>
+        <div className="absolute top-0 right-1/6 w-16 h-3/4 bg-gradient-to-b from-[#4c7934]/28 via-[#4c7934]/7 to-transparent transform -rotate-9 blur-2xl opacity-55"></div>
+        <div className="absolute top-0 left-2/3 w-10 h-1/2 bg-gradient-to-b from-[#4c7934]/25 via-[#4c7934]/6 to-transparent transform rotate-20 blur-xl opacity-50"></div>
+
+        <div className="absolute top-0 left-1/3 w-8 h-4/5 bg-gradient-to-b from-[#8bc34a]/30 via-[#8bc34a]/10 to-transparent transform rotate-25 blur-lg opacity-40"></div>
+        <div className="absolute top-0 right-2/3 w-12 h-3/5 bg-gradient-to-b from-[#8bc34a]/25 via-[#8bc34a]/8 to-transparent transform -rotate-18 blur-xl opacity-35"></div>
+      </div>
+      
+      <div className="absolute inset-0 bg-gradient-to-br from-[#235421]/8 via-transparent to-[#4c7934]/8"></div>
+      <div className="absolute inset-0 bg-gradient-radial from-[#4c7934]/5 via-transparent to-transparent"></div>
+
+      {/* Hero Section with Background */}
+      <section className="relative min-h-screen flex items-center justify-center px-4">
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/50"></div>
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
+          style={{
+            backgroundImage: `url(${Background})`,
+          }}
+        ></div>
+        
+        {/* Centered Hero Content */}
+        <div className="relative z-10 max-w-4xl mx-auto text-center">
+
+          <h1 className="text-5xl md:text-7xl font-semibold mb-8 md:mt-40  text-white drop-shadow-lg">
+            Your Secret
+            <span className="text-[#4C7934] italic"> Garden</span>
+            <br />of Memories
           </h1>
           
-          <p className="text-lg italic text-[#e6c96b] mb-4">
-            "Enter the Garden of Connection"
+          <p className="text-xl md:text-2xl text-[#a7b1a3]/90 mb-12 max-w-3xl mx-auto leading-relaxed drop-shadow-md">
+            A magical place where friends and lovers plant their sweetest moments, nurture their bond, and watch their story bloom—no matter the distance between hearts.
           </p>
-          
-          <p className="text-xl md:text-2xl text-[#7c998a] mb-8 max-w-3xl mx-auto leading-relaxed ">
-            Weave magic into your long-distance love story. Track your hearts' rhythms, share enchanted memories, 
-            and nurture your bond through the mystical realm of Elarin.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/signup">
-              <Button size="lg" 
-                      className="bg-[#3fffa1] hover:bg-[#3fffa1]/90 text-[#0b0f0c] text-lg px-8 py-3 rounded-xl font-semibold transition-all duration-300 hover:shadow-2xl hover:shadow-[#3fffa1]/40 ">
-                Begin Your Journey
-              </Button>
-            </Link>
-            <Link to="/login">
-              <Button variant="outline" 
-                      size="lg" 
-                      className="text-lg px-8 py-3 border-[#e6c96b] text-[#e6c96b] hover:bg-[#e6c96b]/10 rounded-xl transition-all duration-300 ">
-                Return to Portal
-              </Button>
-            </Link>
-          </div>
-        </div>
-        
-        {/* Floating Mystical Hearts */}
-        <div className="absolute top-20 left-10 opacity-30 animate-bounce">
-          <Heart className="h-8 w-8 text-[#3fffa1] fill-current" />
-        </div>
-        <div className="absolute top-40 right-20 opacity-20 animate-bounce delay-1000">
-          <Heart className="h-6 w-6 text-[#e6c96b] fill-current" />
-        </div>
-        <div className="absolute bottom-20 left-20 opacity-25 animate-bounce delay-2000">
-          <Heart className="h-10 w-10 text-[#7c998a] fill-current" />
-        </div>
-      </section>
-
-      {/* Enchanted Divider */}
-      <div className="flex justify-center mb-16">
-        <div className="flex items-center space-x-4">
-          <div className="h-px w-16 bg-gradient-to-r from-transparent to-[#3fffa1]"></div>
-          <Sparkles className="h-6 w-6 text-[#e6c96b]" />
-          <div className="h-px w-16 bg-gradient-to-l from-transparent to-[#3fffa1]"></div>
-        </div>
-      </div>
-
-      {/* Features Section */}
-      <section className="py-20 px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 ">
-              Magical Tools for Your Love Journey
-            </h2>
-            <p className="text-xl text-[#7c998a] max-w-2xl mx-auto ">
-              From enchanted mood crystals to mystical date planning, your portal awaits with powerful magic.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="bg-[#121c16] border border-[#3fffa1]/20 hover:border-[#3fffa1]/40 transition-all duration-300 rounded-3xl hover:shadow-2xl hover:shadow-black/30 group">
-              <CardHeader className="text-center">
-                <div className="relative inline-block mb-4">
-                  <MessageCircle className="h-8 w-8 text-[#3fffa1] mx-auto group-hover:scale-110 transition-transform duration-300" />
-                  <div className="absolute -top-1 -right-1">
-                    <Sparkles className="h-4 w-4 text-[#e6c96b] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
-                </div>
-                <CardTitle className="text-[#d3e6dc] ">
-                  Enchanted Letters
-                </CardTitle>
-                <CardDescription className="text-[#7c998a] ">
-                  Craft magical love letters that shimmer with emotion and traverse any distance instantly
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="bg-[#121c16] border border-[#3fffa1]/20 hover:border-[#3fffa1]/40 transition-all duration-300 rounded-3xl hover:shadow-2xl hover:shadow-black/30 group">
-              <CardHeader className="text-center">
-                <div className="relative inline-block mb-4">
-                  <Camera className="h-8 w-8 text-[#3fffa1] mx-auto group-hover:scale-110 transition-transform duration-300" />
-                  <div className="absolute -top-1 -right-1">
-                    <Star className="h-4 w-4 text-[#e6c96b] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
-                </div>
-                <CardTitle className="text-[#d3e6dc] ">
-                  Memory Crystals
-                </CardTitle>
-                <CardDescription className="text-[#7c998a] ">
-                  Preserve precious moments in luminous crystal galleries that glow with shared memories
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="bg-[#121c16] border border-[#3fffa1]/20 hover:border-[#3fffa1]/40 transition-all duration-300 rounded-3xl hover:shadow-2xl hover:shadow-black/30 group">
-              <CardHeader className="text-center">
-                <div className="relative inline-block mb-4">
-                  <Calendar className="h-8 w-8 text-[#3fffa1] mx-auto group-hover:scale-110 transition-transform duration-300" />
-                  <div className="absolute -top-1 -right-1">
-                    <Moon className="h-4 w-4 text-[#e6c96b] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
-                </div>
-                <CardTitle className="text-[#d3e6dc] ">
-                  Mystical Meetings
-                </CardTitle>
-                <CardDescription className="text-[#7c998a] ">
-                  Conjure perfect virtual dates with our enchanted planning spells and magical ideas
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="bg-[#121c16] border border-[#3fffa1]/20 hover:border-[#3fffa1]/40 transition-all duration-300 rounded-3xl hover:shadow-2xl hover:shadow-black/30 group">
-              <CardHeader className="text-center">
-                <div className="relative inline-block mb-4">
-                  <Timer className="h-8 w-8 text-[#3fffa1] mx-auto group-hover:scale-110 transition-transform duration-300" />
-                  <div className="absolute -top-1 -right-1">
-                    <Sparkles className="h-4 w-4 text-[#e6c96b] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
-                </div>
-                <CardTitle className="text-[#d3e6dc] ">
-                  Time Weaving
-                </CardTitle>
-                <CardDescription className="text-[#7c998a] ">
-                  Count down to reunions and celebrate milestones with glowing temporal magic
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="bg-[#121c16] border border-[#3fffa1]/20 hover:border-[#3fffa1]/40 transition-all duration-300 rounded-3xl hover:shadow-2xl hover:shadow-black/30 group">
-              <CardHeader className="text-center">
-                <div className="relative inline-block mb-4">
-                  <Heart className="h-8 w-8 text-[#3fffa1] mx-auto group-hover:scale-110 transition-transform duration-300" />
-                  <div className="absolute -top-1 -right-1">
-                    <Star className="h-4 w-4 text-[#e6c96b] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
-                </div>
-                <CardTitle className="text-[#d3e6dc] ">
-                  Heart Resonance
-                </CardTitle>
-                <CardDescription className="text-[#7c998a] ">
-                  Monitor your souls' harmony with ethereal mood tracking and mystical insights
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="bg-[#121c16] border border-[#3fffa1]/20 hover:border-[#3fffa1]/40 transition-all duration-300 rounded-3xl hover:shadow-2xl hover:shadow-black/30 group">
-              <CardHeader className="text-center">
-                <div className="relative inline-block mb-4">
-                  <Users className="h-8 w-8 text-[#3fffa1] mx-auto group-hover:scale-110 transition-transform duration-300" />
-                  <div className="absolute -top-1 -right-1">
-                    <Moon className="h-4 w-4 text-[#e6c96b] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
-                </div>
-                <CardTitle className="text-[#d3e6dc] ">
-                  Soul Binding
-                </CardTitle>
-                <CardDescription className="text-[#7c998a] ">
-                  Invite your beloved to join your sacred grove and create an eternal connection
-                </CardDescription>
-              </CardHeader>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Enchanted Divider */}
-      <div className="flex justify-center mb-16">
-        <div className="flex items-center space-x-4">
-          <div className="h-px w-20 bg-gradient-to-r from-transparent to-[#e6c96b]"></div>
-          <Heart className="h-6 w-6 text-[#3fffa1] fill-current animate-pulse" />
-          <div className="h-px w-20 bg-gradient-to-l from-transparent to-[#e6c96b]"></div>
-        </div>
-      </div>
-
-      {/* CTA Section */}
-      <section className="py-20 px-4 relative mb-20 mx-12">
-        <div className="absolute inset-0 bg-gradient-to-r from-[#3fffa1]/10 via-transparent to-[#e6c96b]/10 rounded-3xl"></div>
-        <div className="max-w-4xl mx-auto text-center relative">
-          <div className="mb-6">
-            <Sparkles className="h-12 w-12 text-[#e6c96b] mx-auto animate-spin" />
-          </div>
-          <h2 className="text-4xl font-bold mb-6 ">
-            Ready to Weave Your Love Magic?
-          </h2>
-          <p className="text-xl text-[#7c998a] mb-8 max-w-2xl mx-auto ">
-            Join thousands of souls who have discovered the ancient art of nurturing love across any distance through the mystical realm of Elarin.
-          </p>
-          <Link to="/signup">
+          <Link to='login'>
             <Button size="lg" 
-                    className="bg-[#e6c96b] hover:bg-[#e6c96b]/90 text-[#0b0f0c] text-lg px-8 py-3 rounded-xl font-semibold transition-all duration-300 hover:shadow-2xl hover:shadow-[#e6c96b]/40 ">
-              Enter the Portal - Free Forever
+              className="cursor-pointer text-lg px-12 py-6 bg-[#12350B]/80 border border-[#4C7934]/50 hover:border-[#12350B]/90  text-[#A7B1A3] hover:bg-[#4c7934]/10 rounded-xl transition-all duration-300 backdrop-blur-sm">
+              Plant Your Garden
+              <Sparkles className="ml-2 h-6 w-6 hover:rotate-12 transition-transform" />
             </Button>
           </Link>
         </div>
       </section>
 
-      {/* Bottom magical elements */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 opacity-30">
-        <div className="flex space-x-8">
-          <Sparkles className="h-4 w-4 text-[#3fffa1] animate-pulse" />
-          <Star className="h-4 w-4 text-[#e6c96b] animate-pulse delay-500" />
-          <Moon className="h-4 w-4 text-[#7c998a] animate-pulse delay-1000" />
+      {/* Features Section */}
+      <section className="py-20 px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-light mb-4 text-white">
+              Everything you need to grow together
+            </h2>
+            <p className="text-lg text-[#a7b1a3]/70 max-w-2xl mx-auto">
+              Gentle tools to help you and your favorite people create a beautiful space filled with love, laughter, and cherished moments.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <Card className="bg-gradient-to-br from-[#0d1f08]/80 to-[#11210a]/60 border-2 border-[#235421]/80 hover:border-[#6b9d47]/60 transition-all duration-500 rounded-3xl hover:shadow-2xl hover:shadow-[#4c7934]/20 group backdrop-blur-lg relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-[#4c7934]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <CardHeader className="text-center p-8 relative z-10">
+                <div className="mb-6 relative">
+                  <MessageCircle className="h-10 w-10 text-[#6b9d47] mx-auto group-hover:scale-110 transition-transform duration-300 relative z-10" />
+                </div>
+                <CardTitle className="text-white text-xl font-medium mb-3">
+                  Secret Whispers
+                </CardTitle>
+                <CardDescription className="text-[#a7b1a3]/80 leading-relaxed text-base">
+                  Share your deepest thoughts and sweetest words in your own private sanctuary. Every message is a seed of love.
+                </CardDescription>
+              </CardHeader>
+            </Card>
+
+            <Card className="bg-gradient-to-br from-[#0d1f08]/80 to-[#11210a]/60 border-2 border-[#235421]/80 hover:border-[#6b9d47]/60 transition-all duration-500 rounded-3xl hover:shadow-2xl hover:shadow-[#4c7934]/20 group backdrop-blur-lg relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-[#4c7934]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <CardHeader className="text-center p-8 relative z-10">
+                <div className="mb-6 relative">
+                  <Camera className="h-10 w-10 text-[#6b9d47] mx-auto group-hover:scale-110 transition-transform duration-300 relative z-10" />
+                </div>
+                <CardTitle className="text-white text-xl font-medium mb-3">
+                  Memory Blossoms
+                </CardTitle>
+                <CardDescription className="text-[#a7b1a3]/80 leading-relaxed text-base">
+                  Collect all your beautiful moments like pressed flowers in a digital diary. Watch your story unfold through pictures.
+                </CardDescription>
+              </CardHeader>
+            </Card>
+
+            <Card className="bg-gradient-to-br from-[#0d1f08]/80 to-[#11210a]/60 border-2 border-[#235421]/80 hover:border-[#6b9d47]/60 transition-all duration-500 rounded-3xl hover:shadow-2xl hover:shadow-[#4c7934]/20 group backdrop-blur-lg relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-[#4c7934]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <CardHeader className="text-center p-8 relative z-10">
+                <div className="mb-6 relative">
+                  <Calendar className="h-10 w-10 text-[#6b9d47] mx-auto group-hover:scale-110 transition-transform duration-300 relative z-10" />
+                </div>
+                <CardTitle className="text-white text-xl font-medium mb-3">
+                  Dream Dates
+                </CardTitle>
+                <CardDescription className="text-[#a7b1a3]/80 leading-relaxed text-base">
+                  Plan your next adventure together and count the days until you're reunited. Every moment apart brings you closer.
+                </CardDescription>
+              </CardHeader>
+            </Card>
+
+            <Card className="bg-gradient-to-br from-[#0d1f08]/80 to-[#11210a]/60 border-2 border-[#235421]/80 hover:border-[#6b9d47]/60 transition-all duration-500 rounded-3xl hover:shadow-2xl hover:shadow-[#4c7934]/20 group backdrop-blur-lg relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-[#4c7934]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <CardHeader className="text-center p-8 relative z-10">
+                <div className="mb-6 relative">
+                  <Timer className="h-10 w-10 text-[#6b9d47] mx-auto group-hover:scale-110 transition-transform duration-300 relative z-10" />
+                </div>
+                <CardTitle className="text-white text-xl font-medium mb-3">
+                  Love Milestones
+                </CardTitle>
+                <CardDescription className="text-[#a7b1a3]/80 leading-relaxed text-base">
+                  Celebrate every precious anniversary and special moment. Mark the growth of your beautiful connection.
+                </CardDescription>
+              </CardHeader>
+            </Card>
+
+            <Card className="bg-gradient-to-br from-[#0d1f08]/80 to-[#11210a]/60 border-2 border-[#235421]/80 hover:border-[#6b9d47]/60 transition-all duration-500 rounded-3xl hover:shadow-2xl hover:shadow-[#4c7934]/20 group backdrop-blur-lg relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-[#4c7934]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <CardHeader className="text-center p-8 relative z-10">
+                <div className="mb-6 relative">
+                  <Heart className="h-10 w-10 text-[#6b9d47] mx-auto group-hover:scale-110 transition-transform duration-300 relative z-10" />
+                </div>
+                <CardTitle className="text-white text-xl font-medium mb-3">
+                  Daily Sunshine
+                </CardTitle>
+                <CardDescription className="text-[#a7b1a3]/80 leading-relaxed text-base">
+                  Share your daily joys and gentle moments. Let each other know you're thinking of them, always.
+                </CardDescription>
+              </CardHeader>
+            </Card>
+
+            <Card className="bg-gradient-to-br from-[#0d1f08]/80 to-[#11210a]/60 border-2 border-[#235421]/80 hover:border-[#6b9d47]/60 transition-all duration-500 rounded-3xl hover:shadow-2xl hover:shadow-[#4c7934]/20 group backdrop-blur-lg relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-[#4c7934]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <CardHeader className="text-center p-8 relative z-10">
+                <div className="mb-6 relative">
+                  <Users className="h-10 w-10 text-[#6b9d47] mx-auto group-hover:scale-110 transition-transform duration-300 relative z-10" />
+                </div>
+                <CardTitle className="text-white text-xl font-medium mb-3">
+                  Your Love Story
+                </CardTitle>
+                <CardDescription className="text-[#a7b1a3]/80 leading-relaxed text-base">
+                  Create a beautiful space that tells the story of your unique bond, filled with all the little things that make you special.
+                </CardDescription>
+              </CardHeader>
+            </Card>
+          </div>
         </div>
-      </div>
+      </section>
+
+      {/* Enhanced CTA Section */}
+      <section className="py-20 px-4 mb-10 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#4c7934]/5 to-transparent"></div>
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <div className="mb-8 relative">
+            <div className="flex justify-center space-x-4 mb-6">
+              <Heart className="h-8 w-8 text-[#6b9d47] fill-current animate-pulse" style={{animationDelay: '0s'}} />
+              <Sparkles className="h-6 w-6 text-[#4c7934] animate-pulse" style={{animationDelay: '0.5s'}} />
+              <Heart className="h-8 w-8 text-[#6b9d47] fill-current animate-pulse" style={{animationDelay: '1s'}} />
+            </div>
+          </div>
+          
+          <h2 className="text-4xl font-light mb-6 text-white leading-relaxed">
+            Ready to start your
+            <span className="text-[#6b9d47] font-normal"> magical journey</span>?
+          </h2>
+          <p className="text-xl text-[#a7b1a3]/80 mb-10 max-w-2xl mx-auto leading-relaxed">
+            Join the sweetest souls who've already found their perfect place to keep love alive and friendships blooming across any distance.
+          </p>
+          
+          <div className="space-y-4">
+            <Button size="lg" 
+                    className="bg-gradient-to-r from-[#4c7934] via-[#6b9d47] to-[#8bc34a] hover:from-[#235421] hover:via-[#4c7934] hover:to-[#6b9d47] text-white text-xl px-16 py-6 rounded-2xl font-medium transition-all duration-500 group shadow-2xl hover:shadow-[#6b9d47]/40 relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+              <span className="relative flex items-center">
+                Create Your Garden
+                <Heart className="ml-3 h-6 w-6 fill-current group-hover:scale-125 transition-transform duration-300" />
+              </span>
+            </Button>
+            
+            <div className="flex items-center justify-center space-x-2 text-sm text-[#a7b1a3]/60">
+              <Sparkles className="h-4 w-4 text-[#6b9d47]" />
+              <span>Free forever • Made with love • No strings attached</span>
+              <Sparkles className="h-4 w-4 text-[#6b9d47]" />
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   )
 }
