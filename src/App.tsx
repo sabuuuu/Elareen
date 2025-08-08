@@ -1,6 +1,7 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { supabase } from './lib/supabase'
+import type { User } from '@supabase/supabase-js'
 import { AuthWrapper } from './components/layout/auth-wrapper'
 import { Footer } from './components/layout/footer'
 import { Toaster } from './components/ui/sonner'
@@ -18,7 +19,7 @@ import { MoodHubNavbar } from './components/layout/navbar'
 
 
 
-function PublicRoute({ children, isAuthenticated, isLoading }) {
+function PublicRoute({ children, isAuthenticated, isLoading }: { children: React.ReactNode, isAuthenticated: boolean, isLoading: boolean }) {
   if (isLoading) {
     return <div className="flex items-center justify-center min-h-screen">Loading...</div>
   }
@@ -31,7 +32,15 @@ function PublicRoute({ children, isAuthenticated, isLoading }) {
 }
 
 function App() {
-  const [user, setUser] = useState(null)
+  return (
+    <Router>
+      <AppContent />
+    </Router>
+  )
+}
+
+function AppContent() {
+    const [user, setUser] = useState<User | null>(null)
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
@@ -46,7 +55,7 @@ function App() {
 
     // Listen for auth changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      async (event, session) => {
+            async (_event, session) => {
         setUser(session?.user ?? null)
         setIsLoading(false)
       }
@@ -55,12 +64,13 @@ function App() {
     return () => subscription.unsubscribe()
   }, [])
 
+  const location = useLocation()
   const isAuthenticated = !!user
+  const showNavAndFooter = !['/login', '/signup'].includes(location.pathname)
 
   return (
-    <Router>
-      <div className="min-h-screen bg-gray-50 flex flex-col">
-        <MoodHubNavbar />
+    <div className="min-h-screen bg-gray-50 flex flex-col">
+        {showNavAndFooter && <MoodHubNavbar />}
         <main className="flex-1">
           <Routes>
             <Route path="/" element={
@@ -116,10 +126,9 @@ function App() {
             } />
           </Routes>
         </main>
-        <Footer />
+        {showNavAndFooter && <Footer />}
         <Toaster />
       </div>
-    </Router>
   )
 }
 
