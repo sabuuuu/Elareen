@@ -152,8 +152,10 @@ export default function LandingPage() {
         </div>
       </section>
 
+
       {/* CTA Section */}
-      <section className="py-20 px-4 mb-10 relative">
+      <section className="py-30 px-4 mb-10 relative">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(107,157,71,0.15)_0%,_transparent_40%)]"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#4c7934]/5 to-transparent"></div>
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <div className="mb-8 relative">

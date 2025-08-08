@@ -11,9 +11,10 @@ import LoginBackground from '@/assets/images/login.png'
 import Logo from '@/assets/images/logo.png'
 
 export function SignupPage() {
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
@@ -22,15 +23,6 @@ export function SignupPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     
-    if (password !== confirmPassword) {
-      toast({
-        title: 'Error',
-        description: 'Passwords do not match.',
-        variant: 'destructive',
-      })
-      return
-    }
-
     if (password.length < 6) {
       toast({
         title: 'Error',
@@ -89,6 +81,38 @@ export function SignupPage() {
 
         <form onSubmit={handleSubmit}>
           <CardContent className="space-y-4 px-8 pt-8">
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="firstName" className="text-sm font-medium text-[#a7b1a3]">
+                  First Name
+                </Label>
+                <Input
+                  id="firstName"
+                  type="text"
+                  placeholder="e.g., Garden"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                  required
+                  className="h-11 px-4 bg-transparent border-2 border-[#a7b1a3]/30 rounded-xl text-white placeholder:text-[#a7b1a3]/50 focus:border-[#6b9d47] focus:ring-[#6b9d47] transition-all duration-300"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="lastName" className="text-sm font-medium text-[#a7b1a3]">
+                  Last Name
+                </Label>
+                <Input
+                  id="lastName"
+                  type="text"
+                  placeholder="e.g., Keeper"
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                  required
+                  className="h-11 px-4 bg-transparent border-2 border-[#a7b1a3]/30 rounded-xl text-white placeholder:text-[#a7b1a3]/50 focus:border-[#6b9d47] focus:ring-[#6b9d47] transition-all duration-300"
+                />
+              </div>
+            </div>
+
             <div className="space-y-2">
               <Label htmlFor="email" className="text-sm font-medium text-[#a7b1a3]">
                 Your Email
@@ -128,21 +152,6 @@ export function SignupPage() {
                   {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
                 </Button>
               </div>
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="confirmPassword" className="text-sm font-medium text-[#a7b1a3]">
-                Confirm Password
-              </Label>
-              <Input
-                id="confirmPassword"
-                type={showPassword ? 'text' : 'password'}
-                placeholder="Confirm your secret"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                required
-                className="h-11 px-4 bg-transparent border-2 border-[#a7b1a3]/30 rounded-xl text-white placeholder:text-[#a7b1a3]/50 focus:border-[#6b9d47] focus:ring-[#6b9d47] transition-all duration-300"
-              />
             </div>
           </CardContent>
 

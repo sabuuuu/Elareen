@@ -17,12 +17,12 @@ export function DashboardPage() {
   const anniversary = new Date('2025-06-15T00:00:00')
 
   return (
-    <div className=" mx-auto p-6 space-y-6 bg-[#0b0f0c] min-h-screen">
+    <div className=" mx-auto py-6 px-6 md:px-12 space-y-6 bg-[#091605] min-h-screen">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="mt-25 flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-[#d3e6dc] font-cinzel">Your MoodHub Dashboard</h1>
-          <p className="text-[#d3e6dc]/80 mt-1 font-inter">Welcome back! Here's what's happening in your relationship.</p>
+          <h1 className="text-xl font-bold text-[#d3e6dc]">Your MoodHub Dashboard</h1>
+          <p className="text-[#d3e6dc]/80 mt-1 ">Welcome back! Here's what's happening in your relationship.</p>
         </div>
         <Heart className="h-8 w-8 text-[#3fffa1] fill-current drop-shadow-[0_0_10px_rgba(62,255,161,0.4)]" />
       </div>
@@ -31,7 +31,7 @@ export function DashboardPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <Card className="bg-[#121c16] border-[#121c16] hover:shadow-[0_0_10px_rgba(62,255,161,0.2)] transition-all">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-[#d3e6dc] font-inter">Together For</CardTitle>
+            <CardTitle className="text-sm font-medium text-[#d3e6dc] ">Together For</CardTitle>
             <Heart className="h-4 w-4 text-[#d3e6dc]/50" />
           </CardHeader>
           <CardContent>
