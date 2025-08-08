@@ -263,6 +263,39 @@ html {
   transform: translateX(100%) skewX(15deg);
 }
 
+/* Underwater Sunlight Rays Background */
+.sunlight-rays-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  /* Layered gradients for rays */
+  background:
+    radial-gradient(ellipse 120% 80% at 50% -10%, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.06) 60%, transparent 100%),
+    linear-gradient(110deg, rgba(173,216,230,0.08) 40%, transparent 70%),
+    linear-gradient(70deg, rgba(255,255,255,0.10) 20%, transparent 70%),
+    linear-gradient(120deg, rgba(173,216,230,0.07) 10%, transparent 80%),
+    linear-gradient(90deg, rgba(255,255,255,0.10) 5%, transparent 80%);
+  filter: blur(2px) brightness(1.1) saturate(1.1);
+  animation: sunlight-rays-move 9s linear infinite alternate;
+}
+
+@keyframes sunlight-rays-move {
+  0% {
+    background-position: 50% 0%, 0% 0%, 100% 0%, 50% 0%, 0% 0%;
+    opacity: 0.7;
+  }
+  50% {
+    background-position: 55% 10%, 5% 10%, 95% 10%, 60% 10%, 10% 10%;
+    opacity: 1;
+  }
+  100% {
+    background-position: 45% -10%, 0% -10%, 100% -10%, 40% -10%, 0% -10%;
+    opacity: 0.7;
+  }
+}
+
 /* Enhanced glass morphism for buttons */
 .glass-button-enhanced {
   backdrop-filter: blur(24px) saturate(180%);
@@ -307,4 +340,32 @@ html {
 .glass-button-enhanced > * {
   position: relative;
   z-index: 2;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #091605;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #11210A;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+::-webkit-scrollbar-corner {
+  background: #f1f1f1;
+}
+
+.thin-scrollbar::-webkit-scrollbar {
+  width: 4px;
 }

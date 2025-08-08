@@ -56,8 +56,8 @@ export default function LandingPage() {
             <Card className="glass-card rounded-3xl hover:shadow-2xl hover:shadow-[#4c7934]/20 group relative overflow-hidden transition-all duration-500 hover:scale-105">
               <div className="liquid-highlight"></div>
               <CardHeader className="text-center p-8 relative z-10">
-                <div className="mb-6 relative">
-                  <div className="absolute inset-0 bg-[#6b9d47]/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="mb-6 relative flex items-center justify-center">
+                  <div className="w-10 h-10 absolute left-32 bg-[#6b9d47]/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <MessageCircle className="h-10 w-10 text-[#6b9d47] mx-auto group-hover:scale-110 transition-transform duration-300 relative z-10" />
                 </div>
                 <CardTitle className="text-white text-xl font-medium mb-3">
@@ -72,8 +72,8 @@ export default function LandingPage() {
             <Card className="glass-card rounded-3xl hover:shadow-2xl hover:shadow-[#4c7934]/20 group relative overflow-hidden transition-all duration-500 hover:scale-105">
               <div className="liquid-highlight"></div>
               <CardHeader className="text-center p-8 relative z-10">
-                <div className="mb-6 relative">
-                  <div className="absolute inset-0 bg-[#6b9d47]/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="mb-6 relative flex items-center justify-center">
+                  <div className="w-10 h-10 absolute left-32 bg-[#6b9d47]/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <Camera className="h-10 w-10 text-[#6b9d47] mx-auto group-hover:scale-110 transition-transform duration-300 relative z-10" />
                 </div>
                 <CardTitle className="text-white text-xl font-medium mb-3">
@@ -88,8 +88,8 @@ export default function LandingPage() {
             <Card className="glass-card rounded-3xl hover:shadow-2xl hover:shadow-[#4c7934]/20 group relative overflow-hidden transition-all duration-500 hover:scale-105">
               <div className="liquid-highlight"></div>
               <CardHeader className="text-center p-8 relative z-10">
-                <div className="mb-6 relative">
-                  <div className="absolute inset-0 bg-[#6b9d47]/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="mb-6 relative flex items-center justify-center">
+                  <div className="w-10 h-10 absolute left-32 bg-[#6b9d47]/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <Calendar className="h-10 w-10 text-[#6b9d47] mx-auto group-hover:scale-110 transition-transform duration-300 relative z-10" />
                 </div>
                 <CardTitle className="text-white text-xl font-medium mb-3">
@@ -104,8 +104,8 @@ export default function LandingPage() {
             <Card className="glass-card rounded-3xl hover:shadow-2xl hover:shadow-[#4c7934]/20 group relative overflow-hidden transition-all duration-500 hover:scale-105">
               <div className="liquid-highlight"></div>
               <CardHeader className="text-center p-8 relative z-10">
-                <div className="mb-6 relative">
-                  <div className="absolute inset-0 bg-[#6b9d47]/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="mb-6 relative flex items-center justify-center">
+                  <div className="w-10 h-10 absolute left-32 bg-[#6b9d47]/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <Timer className="h-10 w-10 text-[#6b9d47] mx-auto group-hover:scale-110 transition-transform duration-300 relative z-10" />
                 </div>
                 <CardTitle className="text-white text-xl font-medium mb-3">
@@ -120,8 +120,8 @@ export default function LandingPage() {
             <Card className="glass-card rounded-3xl hover:shadow-2xl hover:shadow-[#4c7934]/20 group relative overflow-hidden transition-all duration-500 hover:scale-105">
               <div className="liquid-highlight"></div>
               <CardHeader className="text-center p-8 relative z-10">
-                <div className="mb-6 relative">
-                  <div className="absolute inset-0 bg-[#6b9d47]/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="mb-6 relative flex items-center justify-center">
+                  <div className="w-10 h-10 absolute left-32 bg-[#6b9d47]/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <Heart className="h-10 w-10 text-[#6b9d47] mx-auto group-hover:scale-110 transition-transform duration-300 relative z-10" />
                 </div>
                 <CardTitle className="text-white text-xl font-medium mb-3">
@@ -136,8 +136,8 @@ export default function LandingPage() {
             <Card className="glass-card rounded-3xl hover:shadow-2xl hover:shadow-[#4c7934]/20 group relative overflow-hidden transition-all duration-500 hover:scale-105">
               <div className="liquid-highlight"></div>
               <CardHeader className="text-center p-8 relative z-10">
-                <div className="mb-6 relative">
-                  <div className="absolute inset-0 bg-[#6b9d47]/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="mb-6 relative flex items-center justify-center">
+                  <div className="w-10 h-10 absolute left-32 bg-[#6b9d47]/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <Users className="h-10 w-10 text-[#6b9d47] mx-auto group-hover:scale-110 transition-transform duration-300 relative z-10" />
                 </div>
                 <CardTitle className="text-white text-xl font-medium mb-3">
