@@ -124,11 +124,12 @@ html {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   background: linear-gradient(135deg, 
-    rgba(255, 255, 255, 0.02) 0%, 
-    rgba(255, 255, 255, 0.08) 50%,
-    rgba(255, 255, 255, 0.02) 100%
+    rgba(18, 53, 11, 0.5) 0%, 
+    rgba(76, 121, 52, 0.2) 30%,
+    rgba(107, 157, 71, 0.15) 70%,
+    rgba(18, 53, 11, 0.4) 100%
   );
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(56, 109, 34, 0.1);
   position: relative;
   overflow: hidden;
 }
@@ -143,7 +144,7 @@ html {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.1),
+    rgb(40, 78, 24, 0.1) 50%,
     transparent
   );
   transition: left 0.8s;
@@ -164,73 +165,9 @@ html {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(76, 121, 52, 0.6),
+    rgb(40, 78, 24, 0.1),
     transparent
   );
-  z-index: 2;
-}
-
-.glass-button {
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  background: linear-gradient(135deg, 
-    rgba(18, 53, 11, 0.4) 0%, 
-    rgba(76, 121, 52, 0.15) 50%,
-    rgba(18, 53, 11, 0.3) 100%
-  );
-  border: 1px solid rgba(76, 121, 52, 0.3);
-  position: relative;
-  overflow: hidden;
-  box-shadow: 
-    0 8px 32px rgba(76, 121, 52, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-}
-
-.glass-button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, 
-    rgba(255, 255, 255, 0.05) 0%,
-    rgba(255, 255, 255, 0.02) 50%,
-    rgba(76, 121, 52, 0.1) 100%
-  );
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: 1;
-}
-
-.glass-button:hover::before {
-  opacity: 1;
-}
-
-.glass-button::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    45deg,
-    transparent 30%,
-    rgba(255, 255, 255, 0.05) 50%,
-    transparent 70%
-  );
-  transform: rotate(45deg);
-  transition: transform 0.6s ease;
-  z-index: 0;
-}
-
-.glass-button:hover::after {
-  transform: rotate(45deg) translate(50%, 50%);
-}
-
-.glass-button > * {
-  position: relative;
   z-index: 2;
 }
 
@@ -249,9 +186,9 @@ html {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(107, 157, 71, 0.15),
     rgba(76, 121, 52, 0.2),
-    rgba(107, 157, 71, 0.15),
+    rgba(90, 143, 61, 0.2),
+    rgba(99, 157, 67, 0.2),
     transparent
   );
   transform: translateX(-100%) skewX(-15deg);
@@ -263,38 +200,6 @@ html {
   transform: translateX(100%) skewX(15deg);
 }
 
-/* Underwater Sunlight Rays Background */
-.sunlight-rays-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
-  /* Layered gradients for rays */
-  background:
-    radial-gradient(ellipse 120% 80% at 50% -10%, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.06) 60%, transparent 100%),
-    linear-gradient(110deg, rgba(173,216,230,0.08) 40%, transparent 70%),
-    linear-gradient(70deg, rgba(255,255,255,0.10) 20%, transparent 70%),
-    linear-gradient(120deg, rgba(173,216,230,0.07) 10%, transparent 80%),
-    linear-gradient(90deg, rgba(255,255,255,0.10) 5%, transparent 80%);
-  filter: blur(2px) brightness(1.1) saturate(1.1);
-  animation: sunlight-rays-move 9s linear infinite alternate;
-}
-
-@keyframes sunlight-rays-move {
-  0% {
-    background-position: 50% 0%, 0% 0%, 100% 0%, 50% 0%, 0% 0%;
-    opacity: 0.7;
-  }
-  50% {
-    background-position: 55% 10%, 5% 10%, 95% 10%, 60% 10%, 10% 10%;
-    opacity: 1;
-  }
-  100% {
-    background-position: 45% -10%, 0% -10%, 100% -10%, 40% -10%, 0% -10%;
-    opacity: 0.7;
-  }
-}
 
 /* Enhanced glass morphism for buttons */
 .glass-button-enhanced {

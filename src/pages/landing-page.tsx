@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-[#091605] text-[#a7b1a3] relative overflow-hidden">
+    <div className="min-h-screen bg-[#11210A] text-[#a7b1a3] relative overflow-hidden">
       <section className="relative min-h-screen flex items-center justify-center px-4">
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/50"></div>
         <div 
@@ -53,7 +53,7 @@ export default function LandingPage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="glass-card rounded-3xl hover:shadow-2xl hover:shadow-[#4c7934]/20 group relative overflow-hidden transition-all duration-500 hover:scale-105">
+            <Card className="glass-card rounded-3xl  hover:shadow-2xl hover:shadow-[#4c7934]/20 group relative overflow-hidden transition-all duration-500 hover:scale-105">
               <div className="liquid-highlight"></div>
               <CardHeader className="text-center p-8 relative z-10">
                 <div className="mb-6 relative flex items-center justify-center">
@@ -155,7 +155,7 @@ export default function LandingPage() {
 
       {/* CTA Section */}
       <section className="py-30 px-4 mb-10 relative">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(107,157,71,0.15)_0%,_transparent_40%)]"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(50,143,61,0.3)_0%,_transparent_40%)]"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#4c7934]/5 to-transparent"></div>
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <div className="mb-8 relative">
@@ -175,7 +175,8 @@ export default function LandingPage() {
           </p>
           
           <div className="space-y-4">
-            <Button size="lg" 
+            <Link to='/login'>
+              <Button size="lg" 
               className="glass-button-enhanced cursor-pointer text-lg px-12 py-6 text-[#A7B1A3] hover:text-white rounded-xl transition-all duration-300 group relative overflow-hidden">
               <div className="liquid-highlight"></div>
               <span className="relative flex items-center z-10">
@@ -183,8 +184,9 @@ export default function LandingPage() {
                 <Heart className="ml-3 h-6 w-6 fill-current group-hover:scale-110 transition-transform duration-300" />
               </span>
             </Button>
+            </Link>
             
-            <div className="flex items-center justify-center space-x-2 text-sm text-[#a7b1a3]/60">
+            <div className="flex items-center justify-center space-x-2 mt-2 text-sm text-[#a7b1a3]/60">
               <Sparkles className="h-4 w-4 text-[#6b9d47]" />
               <span>Free forever • Made with love • No strings attached</span>
               <Sparkles className="h-4 w-4 text-[#6b9d47]" />

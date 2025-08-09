@@ -19,7 +19,7 @@ export function MoodChart() {
           <XAxis dataKey="day" />
           <YAxis domain={[0, 10]} />
           <Tooltip />
-          <Bar dataKey="mood" fill="#7B2C3B" radius={[4, 4, 0, 0]} />
+          <Bar dataKey="mood" fill="#6CAB49" radius={[4, 4, 0, 0]} />
         </BarChart>
       </ResponsiveContainer>
     </div>

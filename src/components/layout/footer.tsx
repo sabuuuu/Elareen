@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 export function Footer() {
   return (
-    <footer className="bg-[#091605] border border-b-[transparent] border-l-[transparent] border-r-transparent border-t-[#11210A]/90 mt-auto">
+    <footer className="bg-[#11210A] border border-b-[transparent] border-l-[transparent] border-r-transparent border-t-[#203E13]/50 mt-auto">
 
       <div className="absolute top-0 left-1/4 w-20 h-full bg-gradient-to-b from-[#4c7934]/40 via-[#4c7934]/15 to-transparent transform rotate-12 blur-3xl opacity-80"></div>
       <div className="max-w-7xl mx-auto px-6 py-8">

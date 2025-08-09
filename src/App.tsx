@@ -4,7 +4,6 @@ import { supabase } from './lib/supabase'
 import type { User } from '@supabase/supabase-js'
 import { AuthWrapper } from './components/layout/auth-wrapper'
 import { Footer } from './components/layout/footer'
-import { Toaster } from './components/ui/sonner'
 import { ComplaintsPage } from './pages/complaints-page'
 import { DashboardPage } from './pages/dashboard-page'
 import { DateIdeasPage } from './pages/date-ideas-page'
@@ -16,6 +15,7 @@ import { SignupPage } from './pages/signup-page'
 import { TimersPage } from './pages/timers-page'
 import LandingPage from './pages/landing-page'
 import { MoodHubNavbar } from './components/layout/navbar'
+import { Toaster } from 'react-hot-toast'
 
 
 
@@ -66,10 +66,13 @@ function AppContent() {
 
   const location = useLocation()
   const isAuthenticated = !!user
+  const isLandingPage = location.pathname === '/'
   const showNavAndFooter = !['/login', '/signup'].includes(location.pathname)
+  const showFooter = isLandingPage
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
+      <Toaster position="bottom-left" />
         {showNavAndFooter && <MoodHubNavbar />}
         <main className="flex-1">
           <Routes>
@@ -126,8 +129,7 @@ function AppContent() {
             } />
           </Routes>
         </main>
-        {showNavAndFooter && <Footer />}
-        <Toaster />
+        {showFooter && <Footer />}
       </div>
   )
 }

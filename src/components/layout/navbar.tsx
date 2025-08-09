@@ -11,6 +11,7 @@ import {
 } from "motion/react"
 import React from "react"
 import Logo from "../../assets/images/logo.png"
+import { useToast } from '@/hooks/use-toast'
 
 interface NavbarProps {
   children: React.ReactNode;
@@ -61,7 +62,7 @@ export const NavBody = ({ children, className }: NavBodyProps) => {
 
       className={cn(
         "relative z-[60] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full  px-4 py-2 lg:flex",
-        "backdrop-blur-md border border-[#235421]/50 shadow-[0_0_24px_rgba(9,22,5,0.06),0_1px_1px_rgba(0,0,0,0.05),0_0_0_1px_rgba(9,22,5,0.04),0_0_4px_rgba(9,22,5,0.08),0_16px_68px_rgba(17,33,10,0.05),0_1px_0_rgba(255,255,255,0.1)_inset]",
+        "backdrop-blur-md border border-[#203E13]/30 drop-shadow-[0_0_6px_rgba(128,182,84,0.3)]",
         "w-[75%] translate-y-5",
         className,
       )}
@@ -88,12 +89,12 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
           key={`link-${idx}`}
           onMouseEnter={() => setHovered(idx)}
           onClick={onItemClick}
-          className="relative px-4 py-2 text-[#a7b1a3] hover:text-[#3fffa1] transition-all hover:drop-shadow-[0_0_6px_rgba(62,255,161,0.3)]"
+          className="relative px-4 py-2 text-[#a7b1a3] hover:text-[#76B654] transition-all hover:drop-shadow-[0_0_6px_rgba(118,182,84,0.3)]"
         >
           {hovered === idx && (
             <motion.div
               layoutId="hovered"
-              className="absolute inset-0 h-full w-full rounded-full bg-[#11210a]"
+              className="absolute inset-0 h-full w-full rounded-full bg-[#12350B]"
             />
           )}
           <span className="relative z-20">{item.name}</span>
@@ -258,7 +259,7 @@ export function MoodHubNavbar() {
   const [user, setUser] = useState<SupabaseUser | null>(null)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const navigate = useNavigate()
-
+  const { success, failure } = useToast();
   useEffect(() => {
     // Get current session
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -278,7 +279,10 @@ export function MoodHubNavbar() {
   const handleSignOut = async () => {
     const { error } = await supabase.auth.signOut()
     if (!error) {
+      success('Signed out successfully !')
       navigate('/')
+    }else{
+      failure('Sign out failed !')
     }
   }
 
@@ -309,7 +313,6 @@ export function MoodHubNavbar() {
         <div className="relative z-20 flex items-center space-x-2 ">
           {user ? (
             <NavbarButton
-              variant="dark"
               onClick={handleSignOut}
               className="flex items-center space-x-2"
             >

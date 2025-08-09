@@ -16,23 +16,16 @@ export function LoginPage() {
   const [showPassword, setShowPassword] = useState(false)
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
-  const { toast } = useToast()
+  const { success, failure } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
     const { error } = await signIn(email, password)
     if (error) {
-      toast({
-        title: 'Login Failed',
-        description: error.message,
-        variant: 'destructive',
-      })
+      failure('Login failed !')
     } else {
-      toast({
-        title: 'Welcome Back! 🌱',
-        description: "Your garden missed you. Let's see what's new!",
-      })
+      success('Welcome to Your Garden! 🌱')
       navigate('/dashboard')
     }
     setLoading(false)

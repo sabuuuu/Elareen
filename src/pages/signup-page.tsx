@@ -18,17 +18,13 @@ export function SignupPage() {
   const [showPassword, setShowPassword] = useState(false)
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
-  const { toast } = useToast()
+  const { success, failure } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     
     if (password.length < 6) {
-      toast({
-        title: 'Error',
-        description: 'Password must be at least 6 characters long.',
-        variant: 'destructive',
-      })
+      failure('Password must be at least 6 characters long.')
       return
     }
 
@@ -37,16 +33,9 @@ export function SignupPage() {
     const { error } = await signUp(email, password)
 
     if (error) {
-      toast({
-        title: 'Error',
-        description: error.message,
-        variant: 'destructive',
-      })
+      failure('Signup failed !')
     } else {
-      toast({
-        title: 'Welcome to Your Garden! 🌱',
-        description: 'Your account has been created successfully.',
-      })
+      success('Welcome to Your Garden! 🌱')
       navigate('/setup')
     }
 

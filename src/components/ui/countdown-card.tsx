@@ -37,31 +37,29 @@ export function CountdownCard({ title, targetDate, icon }: CountdownCardProps) {
   }, [targetDate])
 
   return (
-    <Card className="bg-[#121c16] border-[#1e2a22] hover:shadow-[0_0_15px_rgba(62,255,161,0.2)] transition-all duration-300">
+    <Card className="glass-card rounded-xl  hover:shadow-xl hover:shadow-[#4c7934]/10 group relative overflow-hidden transition-all duration-500">
       <CardHeader className="pb-3">
-        <CardTitle className="flex items-center gap-2 text-lg text-[#d3e6dc] font-cinzel">
-          {icon && React.cloneElement(icon as React.ReactElement, {
-            className: "text-[#3fffa1] drop-shadow-[0_0_6px_rgba(62,255,161,0.3)]"
-          })}
+        <CardTitle className="flex items-center gap-2 text-[#d3e6dc] font-cinzel">
+          {icon && React.cloneElement(icon as React.ReactElement)}
           {title}
         </CardTitle>
       </CardHeader>
       <CardContent>
         <div className="grid grid-cols-4 gap-3 text-center">
-          <div className="bg-[#0b0f0c] border border-[#1e2a22] rounded-xl p-3 hover:border-[#3fffa1] hover:shadow-[0_0_8px_rgba(62,255,161,0.2)] transition-all">
-            <div className="text-2xl font-bold text-[#3fffa1]">{timeLeft.days}</div>
+          <div className="glass-card rounded-lg p-3  hover:shadow-[0_0_8px_rgba(62,255,161,0.2)] transition-all">
+            <div className="text-2xl font-bold text-[#6CAB49]">{timeLeft.days}</div>
             <div className="text-xs text-[#a3b8ad] font-inter">Days</div>
           </div>
-          <div className="bg-[#0b0f0c] border border-[#1e2a22] rounded-xl p-3 hover:border-[#3fffa1] hover:shadow-[0_0_8px_rgba(62,255,161,0.2)] transition-all">
-            <div className="text-2xl font-bold text-[#3fffa1]">{timeLeft.hours}</div>
+          <div className="glass-card rounded-lg p-3  hover:shadow-[0_0_8px_rgba(62,255,161,0.2)] transition-all">
+            <div className="text-2xl font-bold text-[#6CAB49]">{timeLeft.hours}</div>
             <div className="text-xs text-[#a3b8ad] font-inter">Hours</div>
           </div>
-          <div className="bg-[#0b0f0c] border border-[#1e2a22] rounded-xl p-3 hover:border-[#3fffa1] hover:shadow-[0_0_8px_rgba(62,255,161,0.2)] transition-all">
-            <div className="text-2xl font-bold text-[#3fffa1]">{timeLeft.minutes}</div>
+          <div className="glass-card rounded-lg p-3  hover:shadow-[0_0_8px_rgba(62,255,161,0.2)] transition-all">
+            <div className="text-2xl font-bold text-[#6CAB49]">{timeLeft.minutes}</div>
             <div className="text-xs text-[#a3b8ad] font-inter">Min</div>
           </div>
-          <div className="bg-[#0b0f0c] border border-[#1e2a22] rounded-xl p-3 hover:border-[#3fffa1] hover:shadow-[0_0_8px_rgba(62,255,161,0.2)] transition-all">
-            <div className="text-2xl font-bold text-[#3fffa1]">{timeLeft.seconds}</div>
+          <div className="glass-card rounded-lg p-3  hover:shadow-[0_0_8px_rgba(62,255,161,0.2)] transition-all">
+            <div className="text-2xl font-bold text-[#6CAB49]">{timeLeft.seconds}</div>
             <div className="text-xs text-[#a3b8ad] font-inter">Sec</div>
           </div>
         </div>
