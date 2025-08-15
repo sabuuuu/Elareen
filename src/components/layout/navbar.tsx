@@ -314,14 +314,14 @@ export function MoodHubNavbar() {
           {user ? (
             <NavbarButton
               onClick={handleSignOut}
-              className="flex items-center space-x-2"
+              className="flex items-center space-x-2 text-[#a7b1a3]"
             >
               <LogOut className="h-4 w-4" />
               <span>Sign Out</span>
             </NavbarButton>
           ) : (
             <>
-              <NavbarButton variant="primary" href="/login">
+              <NavbarButton className='text-[#a7b1a3]' href="/login">
                 Get Started
               </NavbarButton>
             </>
