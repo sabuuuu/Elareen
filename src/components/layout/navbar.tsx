@@ -1,9 +1,6 @@
-import { useState, useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import {  LogOut } from 'lucide-react'
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
-import { supabase } from '@/lib/supabase'
-import type { User as SupabaseUser } from '@supabase/supabase-js'
 import { cn } from "../../lib/utils"
 import {
   motion,
@@ -11,7 +8,6 @@ import {
 } from "motion/react"
 import React from "react"
 import Logo from "../../assets/images/logo.png"
-import { useToast } from '@/hooks/use-toast'
 
 interface NavbarProps {
   children: React.ReactNode;
@@ -21,15 +17,6 @@ interface NavbarProps {
 interface NavBodyProps {
   children: React.ReactNode;
   className?: string;
-}
-
-interface NavItemsProps {
-  items: {
-    name: string;
-    link: string;
-  }[];
-  className?: string;
-  onItemClick?: () => void;
 }
 
 interface MobileNavProps {
@@ -59,7 +46,6 @@ export const Navbar = ({ children, className }: NavbarProps) => {
 export const NavBody = ({ children, className }: NavBodyProps) => {
   return (
     <div
-
       className={cn(
         "relative z-[60] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full  px-4 py-2 lg:flex",
         "backdrop-blur-md border border-[#203E13]/30 drop-shadow-[0_0_6px_rgba(128,182,84,0.3)]",
@@ -69,38 +55,6 @@ export const NavBody = ({ children, className }: NavBodyProps) => {
     >
       {children}
     </div>
-  );
-};
-
-export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
-  const [hovered, setHovered] = useState<number | null>(null);
-
-  return (
-    <motion.div
-      onMouseLeave={() => setHovered(null)}
-      className={cn(
-        "absolute inset-0 hidden flex-1 flex-row items-center justify-center space-x-2 text-sm font-medium font-inter transition duration-200 lg:flex lg:space-x-2",
-        className,
-      )}
-    >
-      {items.map((item, idx) => (
-        <Link
-          to={item.link}
-          key={`link-${idx}`}
-          onMouseEnter={() => setHovered(idx)}
-          onClick={onItemClick}
-          className="relative px-4 py-2 text-[#a7b1a3] hover:text-[#76B654] transition-all hover:drop-shadow-[0_0_6px_rgba(118,182,84,0.3)]"
-        >
-          {hovered === idx && (
-            <motion.div
-              layoutId="hovered"
-              className="absolute inset-0 h-full w-full rounded-full bg-[#12350B]"
-            />
-          )}
-          <span className="relative z-20">{item.name}</span>
-        </Link>
-      ))}
-    </motion.div>
   );
 };
 
@@ -256,76 +210,20 @@ export const NavbarButton = ({
 };
 
 export function MoodHubNavbar() {
-  const [user, setUser] = useState<SupabaseUser | null>(null)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const navigate = useNavigate()
-  const { success, failure } = useToast();
-  useEffect(() => {
-    // Get current session
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setUser(session?.user ?? null)
-    })
-
-    // Listen for auth changes
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user ?? null)
-    })
-
-    return () => {
-      if (subscription) subscription.unsubscribe()
-    }
-  }, [])
-
-  const handleSignOut = async () => {
-    const { error } = await supabase.auth.signOut()
-    if (!error) {
-      success('Signed out successfully !')
-      navigate('/')
-    }else{
-      failure('Sign out failed !')
-    }
-  }
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
-
-  const navigationItems = user ? [
-    { name: 'Dashboard', link: '/dashboard' },
-    { name: 'Letters', link: '/letters' },
-    { name: 'Complaints', link: '/complaints' },
-    { name: 'Memories', link: '/memories' },
-    { name: 'Date Ideas', link: '/date-ideas' },
-    { name: 'Timers', link: '/timers' },
-  ] : []
 
   return (
     <Navbar className=" fixed inset-x-0 top-0 z-40 w-full ">
       {/* Desktop Navigation */}
       <NavBody>
         <NavbarLogo />
-        
-        {user && (
-          <NavItems
-            items={navigationItems}
-            onItemClick={() => setIsMenuOpen(false)}
-          />
-        )}
 
         <div className="relative z-20 flex items-center space-x-2 ">
-          {user ? (
-            <NavbarButton
-              onClick={handleSignOut}
-              className="flex items-center space-x-2 text-[#a7b1a3]"
-            >
-              <LogOut className="h-4 w-4" />
-              <span>Sign Out</span>
-            </NavbarButton>
-          ) : (
-            <>
-              <NavbarButton className='text-[#a7b1a3]' href="/login">
-                Get Started
-              </NavbarButton>
-            </>
-          )}
+          <NavbarButton className='text-[#a7b1a3]' href="/login">
+            Get Started
+          </NavbarButton>
         </div>
       </NavBody>
 
@@ -340,43 +238,15 @@ export function MoodHubNavbar() {
         </MobileNavHeader>
 
         <MobileNavMenu isOpen={isMenuOpen}>
-          {user ? (
-            <>
-              {navigationItems.map((item, idx) => (
-                <Link
-                  key={idx}
-                  to={item.link}
-                  className="text-[#a7b1a3] hover:text-[#3fffa1] transition-all px-4 py-2 font-inter hover:bg-[#11210a] rounded-lg hover:shadow-[0_0_6px_rgba(62,255,161,0.2)] w-full"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              ))}
-              <div className="px-4 py-2 border-t border-[#11210a] w-full">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => {
-                    handleSignOut()
-                    setIsMenuOpen(false)
-                  }}
-                  className="w-full bg-[#11210a] border-[#3fffa1] text-[#a7b1a3] hover:bg-[#11210a]/80 hover:text-[#3fffa1] hover:shadow-[0_0_10px_rgba(62,255,161,0.4)]"
-                >
-                  Sign Out
-                </Button>
-              </div>
-            </>
-          ) : (
-            <div className="flex flex-col space-y-4 px-4 w-full">
-              <Link to="/login" onClick={() => setIsMenuOpen(false)} className="w-full">
-                <Button 
-                  className="glass-button-enhanced w-full rounded-sm bg-[#4C7934] hover:bg-[#235421]/90 text-[#091605]"
-                >
-                  Get Started
-                </Button>
-              </Link>
-            </div>
-          )}
+          <div className="flex flex-col space-y-4 px-4 w-full">
+            <Link to="/login" onClick={() => setIsMenuOpen(false)} className="w-full">
+              <Button 
+                className="glass-button-enhanced w-full rounded-sm bg-[#4C7934] hover:bg-[#235421]/90 text-[#091605]"
+              >
+                Get Started
+              </Button>
+            </Link>
+          </div>
         </MobileNavMenu>
       </MobileNav>
     </Navbar>

@@ -17,8 +17,6 @@ import LandingPage from './pages/landing-page'
 import { MoodHubNavbar } from './components/layout/navbar'
 import { Toaster } from 'react-hot-toast'
 
-
-
 function PublicRoute({ children, isAuthenticated, isLoading }: { children: React.ReactNode, isAuthenticated: boolean, isLoading: boolean }) {
   if (isLoading) {
     return <div className="flex items-center justify-center min-h-screen">Loading...</div>
@@ -40,7 +38,7 @@ function App() {
 }
 
 function AppContent() {
-    const [user, setUser] = useState<User | null>(null)
+  const [user, setUser] = useState<User | null>(null)
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
@@ -55,7 +53,7 @@ function AppContent() {
 
     // Listen for auth changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
-            async (_event, session) => {
+      async (_event, session) => {
         setUser(session?.user ?? null)
         setIsLoading(false)
       }
@@ -67,70 +65,68 @@ function AppContent() {
   const location = useLocation()
   const isAuthenticated = !!user
   const isLandingPage = location.pathname === '/'
-  const showNavAndFooter = !['/login', '/signup'].includes(location.pathname)
-  const showFooter = isLandingPage
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
       <Toaster position="bottom-left" />
-        {showNavAndFooter && <MoodHubNavbar />}
-        <main className="flex-1">
-          <Routes>
-            <Route path="/" element={
-              <PublicRoute isAuthenticated={isAuthenticated} isLoading={isLoading}>
-                <LandingPage />
-              </PublicRoute>
-            } />
-            <Route path="/login" element={
-              <PublicRoute isAuthenticated={isAuthenticated} isLoading={isLoading}>
-                <LoginPage />
-              </PublicRoute>
-            } />
-            <Route path="/signup" element={
-              <PublicRoute isAuthenticated={isAuthenticated} isLoading={isLoading}>
-                <SignupPage />
-              </PublicRoute>
-            } />
-           
-            <Route path="/setup" element={
-              <AuthWrapper>
-                <SetupPage />
-              </AuthWrapper>
-            } />
-            <Route path="/dashboard" element={
-              <AuthWrapper>
-                <DashboardPage />
-              </AuthWrapper>
-            } />
-            <Route path="/letters" element={
-              <AuthWrapper>
-                <LettersPage />
-              </AuthWrapper>
-            } />
-            <Route path="/complaints" element={
-              <AuthWrapper>
-                <ComplaintsPage />
-              </AuthWrapper>
-            } />
-            <Route path="/memories" element={
-              <AuthWrapper>
-                <MemoriesPage />
-              </AuthWrapper>
-            } />
-            <Route path="/date-ideas" element={
-              <AuthWrapper>
-                <DateIdeasPage />
-              </AuthWrapper>
-            } />
-            <Route path="/timers" element={
-              <AuthWrapper>
-                <TimersPage />
-              </AuthWrapper>
-            } />
-          </Routes>
-        </main>
-        {showFooter && <Footer />}
-      </div>
+      {isLandingPage && <MoodHubNavbar />}
+      <main className="flex-1">
+        <Routes>
+          <Route path="/" element={
+            <PublicRoute isAuthenticated={isAuthenticated} isLoading={isLoading}>
+              <LandingPage />
+            </PublicRoute>
+          } />
+          <Route path="/login" element={
+            <PublicRoute isAuthenticated={isAuthenticated} isLoading={isLoading}>
+              <LoginPage />
+            </PublicRoute>
+          } />
+          <Route path="/signup" element={
+            <PublicRoute isAuthenticated={isAuthenticated} isLoading={isLoading}>
+              <SignupPage />
+            </PublicRoute>
+          } />
+         
+          <Route path="/setup" element={
+            <AuthWrapper>
+              <SetupPage />
+            </AuthWrapper>
+          } />
+          <Route path="/dashboard" element={
+            <AuthWrapper>
+              <DashboardPage />
+            </AuthWrapper>
+          } />
+          <Route path="/letters" element={
+            <AuthWrapper>
+              <LettersPage />
+            </AuthWrapper>
+          } />
+          <Route path="/complaints" element={
+            <AuthWrapper>
+              <ComplaintsPage />
+            </AuthWrapper>
+          } />
+          <Route path="/memories" element={
+            <AuthWrapper>
+              <MemoriesPage />
+            </AuthWrapper>
+          } />
+          <Route path="/date-ideas" element={
+            <AuthWrapper>
+              <DateIdeasPage />
+            </AuthWrapper>
+          } />
+          <Route path="/timers" element={
+            <AuthWrapper>
+              <TimersPage />
+            </AuthWrapper>
+          } />
+        </Routes>
+      </main>
+      {isLandingPage && <Footer />}
+    </div>
   )
 }
 
