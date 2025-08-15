@@ -4,7 +4,6 @@ import { Eye, EyeOff, Sparkles } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { signUp } from '@/lib/supabase'
 import { useToast } from '@/hooks/use-toast'
 import LoginBackground from '@/assets/images/login.png'
@@ -43,130 +42,109 @@ export function SignupPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center flex-row-reverse pr-8 md:pr-16 bg-[#091605] text-[#a7b1a3] relative overflow-hidden">
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-50"
-        style={{ backgroundImage: `url(${LoginBackground})` }}
-      ></div>
-
-      <Card className="w-full max-w-md glass-card  rounded-3xl z-10 animate-fade-in-up lg:mr-40">
-        <CardHeader className="text-center pb-4">
-          <div className="flex justify-center mb-2">
-            <img src={Logo} alt="logo" className='size-12'/>
+    <div className="h-screen bg-[#11210A] p-4">
+      <div className="glass-card flex h-full lg:flex-row items-stretch justify-center rounded-3xl">
+        {/* left side (form) */}
+        <div className="w-full h-full rounded-2xl lg:w-1/2 p-10 flex flex-col justify-center shadow-xl">
+          <div className="flex justify-center mb-6">
+            <img src={Logo} alt="logo" className="w-12 h-12" />
           </div>
           
-          <CardTitle className="text-3xl font-semibold mb-2 text-white">
-            Plant Your Garden
-          </CardTitle>
-          
-          <CardDescription className="text-[#a7b1a3]/80 text-base">
-            Create your account to start cultivating your secret garden.
-          </CardDescription>
-        </CardHeader>
+          <h2 className="text-2xl font-semibold text-white mb-2 text-center">Plant Your Garden</h2>
+          <p className="text-neutral-400 text-center mb-8">Create your account to start cultivating your secret garden.</p>
 
-        <div className="px-8">
-          <div className="h-px w-full bg-[#a7b1a3]/20" />
-        </div>
-
-        <form onSubmit={handleSubmit}>
-          <CardContent className="space-y-4 px-8 pt-8">
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="firstName" className="text-sm font-medium text-[#a7b1a3]">
-                  First Name
-                </Label>
+              <div>
+                <Label htmlFor="firstName" className="text-sm font-medium text-[#a7b1a3]">First Name</Label>
                 <Input
                   id="firstName"
                   type="text"
-                  placeholder="e.g., Garden"
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
+                  placeholder="e.g., Garden"
                   required
-                  className="h-11 px-4 bg-transparent border-2 border-[#a7b1a3]/30 rounded-xl text-white placeholder:text-[#a7b1a3]/50 focus:border-[#6b9d47] focus:ring-[#6b9d47] transition-all duration-300"
+                  className="mt-2 py-6 px-4 bg-[#1B2E0F] border border-[#a7b1a3]/30 rounded-lg text-white placeholder:text-neutral-500"
                 />
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="lastName" className="text-sm font-medium text-[#a7b1a3]">
-                  Last Name
-                </Label>
+              <div>
+                <Label htmlFor="lastName" className="text-sm font-medium text-[#a7b1a3]">Last Name</Label>
                 <Input
                   id="lastName"
                   type="text"
-                  placeholder="e.g., Keeper"
                   value={lastName}
                   onChange={(e) => setLastName(e.target.value)}
+                  placeholder="e.g., Keeper"
                   required
-                  className="h-11 px-4 bg-transparent border-2 border-[#a7b1a3]/30 rounded-xl text-white placeholder:text-[#a7b1a3]/50 focus:border-[#6b9d47] focus:ring-[#6b9d47] transition-all duration-300"
+                  className="mt-2 py-6 px-4 bg-[#1B2E0F] border border-[#a7b1a3]/30 rounded-lg text-white placeholder:text-neutral-500"
                 />
               </div>
             </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="email" className="text-sm font-medium text-[#a7b1a3]">
-                Your Email
-              </Label>
+            <div>
+              <Label htmlFor="email" className="text-sm font-medium text-[#a7b1a3]">Email</Label>
               <Input
                 id="email"
                 type="email"
-                placeholder="e.g., gardener@secret.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                placeholder="gardener@secret.com"
                 required
-                className="h-11 px-4 bg-transparent border-2 border-[#a7b1a3]/30 rounded-xl text-white placeholder:text-[#a7b1a3]/50 focus:border-[#6b9d47] focus:ring-[#6b9d47] transition-all duration-300"
+                className="mt-2 py-6 px-4 bg-[#1B2E0F] border border-[#a7b1a3]/30 rounded-lg text-white placeholder:text-neutral-500"
               />
             </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="password" className="text-sm font-medium text-[#a7b1a3]">
-                Your Password
-              </Label>
-              <div className="relative">
+            <div>
+              <Label htmlFor="password" className="text-sm font-medium text-[#a7b1a3]">Password</Label>
+              <div className="relative mt-2">
                 <Input
                   id="password"
                   type={showPassword ? 'text' : 'password'}
-                  placeholder="Create a strong secret"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Create a strong secret"
                   required
-                  className="h-11 px-4 pr-12 bg-transparent border-2 border-[#a7b1a3]/30 rounded-xl text-white placeholder:text-[#a7b1a3]/50 focus:border-[#6b9d47] focus:ring-[#6b9d47] transition-all duration-300"
+                  className="py-6 px-4 pr-12 bg-[#1B2E0F] border border-[#a7b1a3]/30 rounded-lg text-white placeholder:text-neutral-500"
                 />
                 <Button
                   type="button"
                   variant="ghost"
                   size="sm"
-                  className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent text-[#a7b1a3]/60 hover:text-white"
+                  className="absolute right-0 top-0 h-full px-3 py-2 text-neutral-400 hover:text-white hover:bg-transparent"
                   onClick={() => setShowPassword(!showPassword)}
                 >
-                  {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                  {showPassword ? <EyeOff className="h-5 w-5"/> : <Eye className="h-5 w-5"/>}
                 </Button>
               </div>
             </div>
-          </CardContent>
 
-          <CardFooter className=" flex flex-col items-center justify-center space-y-4 px-8">
             <Button
               type="submit"
-              size="lg"
-              className="  glass-button-enhanced cursor-pointer h-11 w-full text-[#A7B1A3] hover:text-white/90 rounded-xl transition-all duration-300 group relative overflow-hidden"
               disabled={loading}
+              className="py-6 glass-button-enhanced cursor-pointer w-full text-[#A7B1A3] hover:text-white/90 rounded-lg transition-all duration-300 group relative overflow-hidden"
             >
-                {loading ? 'Planting...' : 'Plant Your Garden'}
-                <Sparkles className="ml-2 h-5 w-5 group-hover:rotate-12 transition-transform duration-300" />
+              {loading ? 'Planting...' : 'Plant Your Garden'}
+              <Sparkles className="ml-2 h-5 w-5" />
             </Button>
-            
-            <p className="text-center text-sm text-[#a7b1a3]/60 pt-2">
+
+            <p className="text-sm text-neutral-500 text-center">
               Already have a garden?{' '}
-              <Link 
-                to="/login" 
-                className="font-medium text-[#6b9d47] hover:text-[#8dc96c] hover:underline transition-colors duration-300"
-              >
+              <Link to="/login" className="font-medium text-[#6b9d47] hover:text-[#8dc96c] hover:underline transition-colors duration-300">
                 Enter your sanctuary
               </Link>
             </p>
-          </CardFooter>
-        </form>
-      </Card>
+          </form>
+        </div>
+        {/* right side (image) */}
+        <div className="rounded-2xl hidden lg:flex lg:w-full h-full relative shadow-xl p-2">
+          <img 
+            src={LoginBackground} 
+            alt="Signup background" 
+            className="w-full h-full object-cover rounded-2xl"
+          />
+        </div>
+      </div>
     </div>
   )
 }
