@@ -1,21 +1,21 @@
-import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom'
-import { useState, useEffect } from 'react'
-import { supabase } from './lib/supabase'
-import type { User } from '@supabase/supabase-js'
-import { AuthWrapper } from './components/layout/auth-wrapper'
-import { Footer } from './components/layout/footer'
-import { ComplaintsPage } from './pages/complaints-page'
-import { DashboardPage } from './pages/dashboard-page'
-import { DateIdeasPage } from './pages/date-ideas-page'
-import { LettersPage } from './pages/letters-page'
-import { LoginPage } from './pages/login-page'
-import { MemoriesPage } from './pages/memories-page'
-import { SetupPage } from './pages/setup-page'
-import { SignupPage } from './pages/signup-page'
-import { TimersPage } from './pages/timers-page'
-import LandingPage from './pages/landing-page'
-import { MoodHubNavbar } from './components/layout/navbar'
-import { Toaster } from 'react-hot-toast'
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { supabase } from './lib/supabase';
+import type { User } from '@supabase/supabase-js';
+import { AuthWrapper } from './components/layout/auth-wrapper';
+import { AppLayout } from './components/layout/app-layout';
+import { ComplaintsPage } from './pages/complaints-page';
+import { DashboardPage } from './pages/dashboard-page';
+import { DateIdeasPage } from './pages/date-ideas-page';
+import { LettersPage } from './pages/letters-page';
+import { LoginPage } from './pages/login-page';
+import { MemoriesPage } from './pages/memories-page';
+import { SetupPage } from './pages/setup-page';
+import { SignupPage } from './pages/signup-page';
+import { TimersPage } from './pages/timers-page';
+import LandingPage from './pages/landing-page';
+import { MoodHubNavbar } from './components/layout/navbar';
+import { Toaster } from 'react-hot-toast';
 
 function PublicRoute({ children, isAuthenticated, isLoading }: { children: React.ReactNode, isAuthenticated: boolean, isLoading: boolean }) {
   if (isLoading) {
@@ -90,42 +90,56 @@ function AppContent() {
          
           <Route path="/setup" element={
             <AuthWrapper>
-              <SetupPage />
+              <AppLayout>
+                <SetupPage />
+              </AppLayout>
             </AuthWrapper>
           } />
           <Route path="/dashboard" element={
             <AuthWrapper>
-              <DashboardPage />
+              <AppLayout>
+                <DashboardPage />
+              </AppLayout>
             </AuthWrapper>
           } />
           <Route path="/letters" element={
             <AuthWrapper>
-              <LettersPage />
+              <AppLayout>
+                <LettersPage />
+              </AppLayout>
             </AuthWrapper>
           } />
           <Route path="/complaints" element={
             <AuthWrapper>
-              <ComplaintsPage />
+              <AppLayout>
+                <ComplaintsPage />
+              </AppLayout>
             </AuthWrapper>
           } />
           <Route path="/memories" element={
             <AuthWrapper>
-              <MemoriesPage />
+              <AppLayout>
+                <MemoriesPage />
+              </AppLayout>
             </AuthWrapper>
           } />
           <Route path="/date-ideas" element={
             <AuthWrapper>
-              <DateIdeasPage />
+              <AppLayout>
+                <DateIdeasPage />
+              </AppLayout>
             </AuthWrapper>
           } />
           <Route path="/timers" element={
             <AuthWrapper>
-              <TimersPage />
+              <AppLayout>
+                <TimersPage />
+              </AppLayout>
             </AuthWrapper>
           } />
         </Routes>
       </main>
-      {isLandingPage && <Footer />}
+      {isLandingPage && <MoodHubNavbar />}
     </div>
   )
 }

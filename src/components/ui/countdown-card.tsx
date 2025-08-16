@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import React from 'react'
 
 interface CountdownCardProps {
@@ -37,33 +36,29 @@ export function CountdownCard({ title, targetDate, icon }: CountdownCardProps) {
   }, [targetDate])
 
   return (
-    <Card className="glass-card rounded-xl  hover:shadow-xl hover:shadow-[#4c7934]/10 group relative overflow-hidden transition-all duration-500">
-      <CardHeader className="pb-3">
-        <CardTitle className="flex items-center gap-2 text-[#d3e6dc] font-cinzel">
-          {icon && React.cloneElement(icon as React.ReactElement)}
-          {title}
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
-        <div className="grid grid-cols-4 gap-3 text-center">
-          <div className="glass-card rounded-lg p-3  hover:shadow-[0_0_8px_rgba(62,255,161,0.2)] transition-all">
-            <div className="text-2xl font-bold text-[#6CAB49]">{timeLeft.days}</div>
-            <div className="text-xs text-[#a3b8ad] font-inter">Days</div>
+    <div className="flex justify-around py-3 bg-white rounded-3xl shadow-xl relative overflow-hidden transition-all duration-500">
+      <h1 className="text-xs font-bold flex items-center gap-2 text-[#1B430F]">
+        {icon && React.cloneElement(icon as React.ReactElement)}
+        {title}
+      </h1>
+        <div className="grid grid-cols-4 gap-3 text-center py-1">
+          <div className="flex items-center justify-center gap-1 bg-[#1B430F] p-1 rounded-md shadow-xl relative overflow-hidden transition-all duration-500">
+            <div className="text-md font-semibold text-white">{timeLeft.days}</div>
+            <div className="text-xs text-gray-200">Days</div>
           </div>
-          <div className="glass-card rounded-lg p-3  hover:shadow-[0_0_8px_rgba(62,255,161,0.2)] transition-all">
-            <div className="text-2xl font-bold text-[#6CAB49]">{timeLeft.hours}</div>
-            <div className="text-xs text-[#a3b8ad] font-inter">Hours</div>
+          <div className="flex items-center justify-center gap-1 bg-[#1B430F] p-1  rounded-md shadow-xl relative overflow-hidden transition-all duration-500">
+            <div className="text-md font-semibold text-white">{timeLeft.hours}</div>
+            <div className="text-xs text-gray-200">Hours</div>
           </div>
-          <div className="glass-card rounded-lg p-3  hover:shadow-[0_0_8px_rgba(62,255,161,0.2)] transition-all">
-            <div className="text-2xl font-bold text-[#6CAB49]">{timeLeft.minutes}</div>
-            <div className="text-xs text-[#a3b8ad] font-inter">Min</div>
+          <div className="flex items-center justify-center gap-1 bg-[#1B430F] p-1 rounded-md shadow-xl relative overflow-hidden transition-all duration-500">
+            <div className="text-md font-semibold text-white">{timeLeft.minutes}</div>
+            <div className="text-xs text-gray-200">Min</div>
           </div>
-          <div className="glass-card rounded-lg p-3  hover:shadow-[0_0_8px_rgba(62,255,161,0.2)] transition-all">
-            <div className="text-2xl font-bold text-[#6CAB49]">{timeLeft.seconds}</div>
-            <div className="text-xs text-[#a3b8ad] font-inter">Sec</div>
+          <div className="flex items-center justify-center gap-1 bg-[#1B430F] p-1 rounded-md shadow-xl relative overflow-hidden transition-all duration-500">
+            <div className="text-md font-semibold text-white">{timeLeft.seconds}</div>
+            <div className="text-xs text-gray-200">Sec</div>
           </div>
         </div>
-      </CardContent>
-    </Card>
+    </div>
   )
 }
