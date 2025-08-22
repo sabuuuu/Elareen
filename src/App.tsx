@@ -16,6 +16,7 @@ import { TimersPage } from './pages/timers-page';
 import LandingPage from './pages/landing-page';
 import { MoodHubNavbar } from './components/layout/navbar';
 import { Toaster } from 'react-hot-toast';
+import { Footer } from './components/layout/footer';
 
 function PublicRoute({ children, isAuthenticated, isLoading }: { children: React.ReactNode, isAuthenticated: boolean, isLoading: boolean }) {
   if (isLoading) {
@@ -139,7 +140,7 @@ function AppContent() {
           } />
         </Routes>
       </main>
-      {isLandingPage && <MoodHubNavbar />}
+      {isLandingPage && <Footer />}
     </div>
   )
 }

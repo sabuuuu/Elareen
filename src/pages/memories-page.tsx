@@ -82,7 +82,7 @@ export function MemoriesPage() {
   }
 
   return (
-    <div className=" mx-auto p-6 space-y-6 bg-[#0b0f0c] min-h-screen">
+    <div className=" mx-auto p-6 space-y-6 bg-[#DFF0D0] min-h-screen">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>

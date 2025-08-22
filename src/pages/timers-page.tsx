@@ -17,7 +17,7 @@ export function TimersPage() {
   const remainingDays = daysTogether % 365
 
   return (
-    <div className="bg-[#0b0f0c] mx-auto p-6 space-y-6">
+    <div className="bg-[#DFF0D0] mx-auto p-6 space-y-6">
       {/* Header */}
       <div className="text-center">
         <h1 className="text-3xl font-bold text-[#d3e6dc] font-cinzel flex items-center justify-center gap-2 mb-2">

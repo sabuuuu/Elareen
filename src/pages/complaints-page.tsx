@@ -97,7 +97,7 @@ export function ComplaintsPage() {
   }
 
   return (
-    <div className="bg-[#0b0f0c] mx-auto p-6 space-y-6">
+    <div className="bg-[#DFF0D0] mx-auto p-6 space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>

@@ -48,7 +48,7 @@ export function SetupPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0b0f0c] flex items-center justify-center p-4">
+    <div className="min-h-screen bg-[#DFF0D0] flex items-center justify-center p-4">
       <Card className="w-full max-w-2xl bg-[#121c16] border-[#1e2a22] rounded-2xl shadow-lg">
         <CardHeader className="text-center">
           <div className="flex justify-center mb-4">

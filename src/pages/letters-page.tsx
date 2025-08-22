@@ -52,7 +52,7 @@ export function LettersPage() {
   }
 
   return (
-    <div className="bg-[#0b0f0c] mx-auto p-6 space-y-6 text-[#d3e6dc]">
+    <div className="bg-[#DFF0D0] mx-auto p-6 space-y-6 text-[#d3e6dc]">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
