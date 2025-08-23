@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Switch } from '@/components/ui/switch'
 import { Badge } from '@/components/ui/badge'
+import ResponsiveModal from '@/components/ui/reusable-modal'
 
 export function LettersPage() {
   const [newLetter, setNewLetter] = useState('')
@@ -15,30 +16,7 @@ export function LettersPage() {
   const [showEditor, setShowEditor] = useState(false)
 
   const letters = [
-    {
-      id: 1,
-      subject: 'Missing You',
-      content: 'My dearest love, I was just thinking about you and couldn\'t help but smile. Your laugh echoes in my mind, and I can\'t wait to hold you again...',
-      date: '2025-01-15',
-      from: 'You',
-      read: true,
-    },
-    {
-      id: 2,
-      subject: 'Thank You for Everything',
-      content: 'I wanted to take a moment to tell you how grateful I am for everything you do. Your kindness, your patience, and your love mean the world to me...',
-      date: '2025-01-12',
-      from: 'Partner',
-      read: false,
-    },
-    {
-      id: 3,
-      subject: 'Our Adventure',
-      content: 'Remember when we got lost on that hiking trail? At first I was worried, but then I realized - being lost with you is better than being found with anyone else...',
-      date: '2025-01-08',
-      from: 'You',
-      read: true,
-    },
+
   ]
 
   const handleSendLetter = () => {
@@ -52,117 +30,109 @@ export function LettersPage() {
   }
 
   return (
-    <div className="bg-[#DFF0D0] mx-auto p-6 space-y-6 text-[#d3e6dc]">
+    <div className="bg-[#DFF0D0] mx-auto p-4 space-y-4 text-[#d3e6dc]">
       {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold flex items-center gap-2 font-cinzel">
-            <Heart className="h-8 w-8 text-[#3fffa1] fill-current drop-shadow-[0_0_10px_rgba(62,255,161,0.4)]" />
-            Love Letters
-          </h1>
-          <p className="text-[#d3e6dc]/80 mt-1 font-inter">Express your feelings and share your thoughts</p>
-        </div>
-        <Button 
+      <div className="flex items-center justify-end">
+        <Button
           onClick={() => setShowEditor(!showEditor)}
-          className="bg-[#3fffa1] hover:bg-[#3fffa1]/90 text-[#0b0f0c] font-bold hover:shadow-[0_0_10px_rgba(62,255,161,0.4)] transition-all"
+          className="bg-[#1B430F] cursor-pointer py-6 text-white hover:bg-[#12350B] hover:text-white rounded-lg transition-all duration-300 group relative overflow-hidden"
         >
           <Edit className="h-4 w-4 mr-2" />
-          Write Letter
+          Write a Letter
         </Button>
       </div>
 
-      {/* Letter Editor */}
-      {showEditor && (
-        <Card className="bg-[#121c16] border-[#1e2a22]">
-          <CardHeader>
-            <CardTitle className="font-cinzel text-[#d3e6dc]">Write a Love Letter</CardTitle>
-            <CardDescription className="text-[#d3e6dc]/70 font-inter">Share your feelings with your partner</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="subject" className="text-[#d3e6dc] font-inter">Subject</Label>
-              <Input
-                id="subject"
-                placeholder="What's this letter about?"
-                value={subject}
-                onChange={(e) => setSubject(e.target.value)}
-                className="bg-[#0b0f0c] border-[#1e2a22] text-[#d3e6dc] focus:ring-[#3fffa1] focus:border-[#3fffa1]"
-              />
-            </div>
-            
-            <div className="space-y-2">
-              <Label htmlFor="content" className="text-[#d3e6dc] font-inter">Your Letter</Label>
-              <Textarea
-                id="content"
-                placeholder="Dear love..."
-                value={newLetter}
-                onChange={(e) => setNewLetter(e.target.value)}
-                className="min-h-[200px] resize-none bg-[#0b0f0c] border-[#1e2a22] text-[#d3e6dc] focus:ring-[#3fffa1] focus:border-[#3fffa1]"
-              />
-            </div>
-            
-            <div className="flex items-center space-x-2">
-              <Switch
-                id="send-email"
-                checked={sendAsEmail}
-                onCheckedChange={setSendAsEmail}
-                className="data-[state=checked]:bg-[#3fffa1] data-[state=unchecked]:bg-[#1e2a22]"
-              />
-              <Label htmlFor="send-email" className="text-[#d3e6dc] font-inter">Send as email too</Label>
-            </div>
-            
-            <div className="flex space-x-2">
-              <Button 
-                onClick={handleSendLetter}
-                className="bg-[#3fffa1] hover:bg-[#3fffa1]/90 text-[#0b0f0c] font-bold hover:shadow-[0_0_10px_rgba(62,255,161,0.4)] transition-all"
-              >
-                <Send className="h-4 w-4 mr-2" />
-                Send Letter
-              </Button>
-              <Button 
-                variant="outline" 
-                onClick={() => setShowEditor(false)}
-                className="border-[#3fffa1] text-[#d3e6dc] hover:bg-[#121c16]/80 hover:text-[#3fffa1] hover:shadow-[0_0_6px_rgba(62,255,161,0.3)]"
-              >
-                Cancel
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
-      )}
+      {/* Letter Editor Modal */}
+      <ResponsiveModal
+        isOpen={showEditor}
+        onClose={() => setShowEditor(false)}
+        title="Write a Love Letter"
+        description="Share your feelings with your partner"
+      >
+        <div className="space-y-4">
+          <div className="space-y-2">
+            <Label htmlFor="subject" className="text-[#d3e6dc]">Subject</Label>
+            <Input
+              id="subject"
+              placeholder="What's this letter about?"
+              value={subject}
+              onChange={(e) => setSubject(e.target.value)}
+              className="bg-[#0b0f0c] border-[#1e2a22] text-[#d3e6dc] focus:ring-[#3fffa1] focus:border-[#3fffa1]"
+            />
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="content" className="text-[#d3e6dc]">Your Letter</Label>
+            <Textarea
+              id="content"
+              placeholder="Dear love..."
+              value={newLetter}
+              onChange={(e) => setNewLetter(e.target.value)}
+              className="min-h-[200px] resize-none bg-[#0b0f0c] border-[#1e2a22] text-[#d3e6dc] focus:ring-[#3fffa1] focus:border-[#3fffa1]"
+            />
+          </div>
+
+          <div className="flex items-center space-x-2">
+            <Switch
+              id="send-email"
+              checked={sendAsEmail}
+              onCheckedChange={setSendAsEmail}
+              className="data-[state=checked]:bg-[#3fffa1] data-[state=unchecked]:bg-[#1e2a22]"
+            />
+            <Label htmlFor="send-email" className="text-[#d3e6dc]">Send as email too</Label>
+          </div>
+
+          <div className="flex space-x-2">
+            <Button
+              onClick={handleSendLetter}
+              className="bg-[#3fffa1] hover:bg-[#3fffa1]/90 text-[#0b0f0c] font-bold hover:shadow-[0_0_10px_rgba(62,255,161,0.4)] transition-all"
+            >
+              <Send className="h-4 w-4 mr-2" />
+              Send Letter
+            </Button>
+            <Button
+              variant="outline"
+              onClick={() => setShowEditor(false)}
+              className="border-[#3fffa1] text-[#d3e6dc] hover:bg-[#121c16]/80 hover:text-[#3fffa1] hover:shadow-[0_0_6px_rgba(62,255,161,0.3)]"
+            >
+              Cancel
+            </Button>
+          </div>
+        </div>
+      </ResponsiveModal>
 
       {/* Letters List */}
-      <div className="space-y-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {letters.map((letter) => (
-          <Card 
-            key={letter.id} 
-            className="bg-[#121c16] border-[#1e2a22] hover:shadow-[0_0_10px_rgba(62,255,161,0.1)] transition-all"
+          <Card
+            key={letter.id}
+            className="bg-white w-full rounded-3xl p-3 shadow-xl relative overflow-hidden transition-all duration-500"
           >
             <CardHeader>
               <div className="flex items-start justify-between">
                 <div className="flex-1">
-                  <CardTitle className="text-lg flex items-center gap-2 font-cinzel text-[#d3e6dc]">
+                  <CardTitle className="text-lg flex items-center gap-2 text-[#1B430F]">
                     {letter.subject}
                     {!letter.read && <Badge className="bg-[#e6c96b] text-[#0b0f0c] hover:bg-[#e6c96b]/90">New</Badge>}
                   </CardTitle>
-                  <CardDescription className="text-[#d3e6dc]/70 font-inter">
+                  <CardDescription className="text-gray-500 mt-1 text-xs">
                     From {letter.from} • {new Date(letter.date).toLocaleDateString()}
                   </CardDescription>
                 </div>
                 {letter.from === 'Partner' && (
-                  <Mail className="h-5 w-5 text-[#3fffa1]" />
+                  <Mail className="h-5 w-5 text-[#1B430F]" />
                 )}
               </div>
             </CardHeader>
             <CardContent>
-              <p className="text-[#d3e6dc]/90 leading-relaxed font-inter">
+              <p className="text-black/80 leading-relaxed">
                 {letter.content}
               </p>
-              <div className="mt-4 pt-4 border-t border-[#1e2a22]">
-                <Button 
-                  variant="ghost" 
+              <div className="mt-4">
+                <Button
+                  variant="ghost"
                   size="sm"
-                  className="text-[#3fffa1] hover:bg-[#121c16]/50 hover:text-[#3fffa1]"
+                  className="bg-[#1B430F] cursor-pointer mt-4 w-full py-6 text-white hover:bg-[#12350B] hover:text-white rounded-lg transition-all duration-300 group relative overflow-hidden"
                 >
                   Reply
                 </Button>
@@ -173,14 +143,14 @@ export function LettersPage() {
       </div>
 
       {letters.length === 0 && (
-        <Card className="bg-[#121c16] border-[#1e2a22]">
+        <Card className="w-full bg-[#1B430F] rounded-3xl p-2 shadow-xl relative overflow-hidden transition-all duration-500">
           <CardContent className="text-center py-12">
-            <Heart className="h-12 w-12 text-[#3fffa1]/50 mx-auto mb-4 drop-shadow-[0_0_6px_rgba(62,255,161,0.2)]" />
-            <h3 className="text-lg font-medium font-cinzel text-[#d3e6dc] mb-2">No letters yet</h3>
-            <p className="text-[#d3e6dc]/70 mb-4 font-inter">Start sharing your feelings with your first love letter.</p>
-            <Button 
+            <Heart className="h-12 w-12 text-[#81BC62]/80 mx-auto mb-4 drop-shadow-[0_0_6px_rgba(62,255,161,0.2)]" />
+            <h3 className="text-lg font-medium text-[#d3e6dc] mb-2">No letters yet</h3>
+            <p className="text-[#d3e6dc]/70 mb-4">Start sharing your feelings with your first love letter.</p>
+            <Button
               onClick={() => setShowEditor(true)}
-              className="bg-[#3fffa1] hover:bg-[#3fffa1]/90 text-[#0b0f0c] font-bold hover:shadow-[0_0_10px_rgba(62,255,161,0.4)]"
+              className="cursor-pointer bg-[#81BC62] hover:bg-[#8DC270]/90 text-[#0A1005] rounded-lg py-5 hover:shadow-[0_0_10px_rgba(62,255,161,0.4)]"
             >
               Write Your First Letter
             </Button>

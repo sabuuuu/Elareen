@@ -38,7 +38,7 @@ export function LoginPage() {
           <div className="flex justify-center mb-6">
             <img src={Logo} alt="logo" className="w-12 h-12" />
           </div>
-          
+
           <h2 className="text-2xl font-semibold text-white mb-2 text-center">Welcome Back</h2>
           <p className="text-neutral-400 text-center mb-8">Enter your credentials to unlock your secret garden.</p>
 
@@ -51,7 +51,7 @@ export function LoginPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="gardener@secret.com"
-                  className="mt-2 py-6 px-4 pr-12 bg-[#1B2E0F] border border-[#a7b1a3]/30 rounded-lg text-white placeholder:text-neutral-500"
+                className="mt-2 py-6 px-4 pr-12 bg-[#1B2E0F] border border-[#a7b1a3]/30 rounded-lg text-white placeholder:text-neutral-500"
               />
             </div>
 
@@ -73,7 +73,7 @@ export function LoginPage() {
                   className="absolute right-0 top-0 h-full px-3 py-2 text-neutral-400 hover:text-white hover:bg-transparent"
                   onClick={() => setShowPassword(!showPassword)}
                 >
-                  {showPassword ? <EyeOff className="h-5 w-5"/> : <Eye className="h-5 w-5"/>}
+                  {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
                 </Button>
               </div>
             </div>
@@ -89,7 +89,7 @@ export function LoginPage() {
 
             <p className="text-sm text-neutral-500 text-center">
               Don't have a garden yet?{' '}
-              <Link to="/signup"                 className="font-medium text-[#6b9d47] hover:text-[#8dc96c] hover:underline transition-colors duration-300">
+              <Link to="/signup" className="font-medium text-[#6b9d47] hover:text-[#8dc96c] hover:underline transition-colors duration-300">
                 Plant one now
               </Link>
             </p>
@@ -97,9 +97,9 @@ export function LoginPage() {
         </div>
         {/* right side (image) */}
         <div className="rounded-2xl hidden lg:flex lg:w-full h-full relative shadow-xl p-2">
-          <img 
-            src={LoginBackground} 
-            alt="Login background" 
+          <img
+            src={LoginBackground}
+            alt="Login background"
             className="w-full h-full object-cover rounded-2xl"
           />
         </div>

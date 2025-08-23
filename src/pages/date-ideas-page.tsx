@@ -8,6 +8,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { Badge } from '@/components/ui/badge'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import ResponsiveModal from '@/components/ui/reusable-modal'
 
 export function DateIdeasPage() {
   const [showForm, setShowForm] = useState(false)
@@ -20,68 +21,68 @@ export function DateIdeasPage() {
   const dateIdeas = [
     {
       id: 1,
-      title: 'Moonlit Forest Walk',
-      description: 'Explore the enchanted woods under the full moon with fairy lanterns',
+      title: 'Moonlit Nature Walk',
+      description: 'Take a romantic evening stroll through the park under the stars',
       type: 'outdoor',
-      location: 'Ancient Oak Forest',
+      location: 'Central Park',
       votes: 12,
       favorite: true,
-      tags: ['magical', 'nature', 'romantic'],
+      tags: ['romantic', 'nature', 'evening'],
       difficulty: 'easy',
     },
     {
       id: 2,
-      title: 'Alchemy Potion Making',
-      description: 'Create mystical elixirs with rare herbs and crystals',
+      title: 'Cooking Class Together',
+      description: 'Learn to make a new cuisine and enjoy the meal you created',
       type: 'indoor',
-      location: 'Apothecary Cottage',
+      location: 'Culinary Studio',
       votes: 8,
       favorite: false,
-      tags: ['creative', 'mystical', 'crafts'],
+      tags: ['creative', 'food', 'learning'],
       difficulty: 'medium',
     },
     {
       id: 3,
-      title: 'Stargazing Ritual',
-      description: 'Read fortunes in the celestial patterns with ancient star charts',
+      title: 'Stargazing Night',
+      description: 'Bring blankets and snacks for a cozy night under the stars',
       type: 'outdoor',
-      location: 'Celestial Plateau',
+      location: 'Observatory Hill',
       votes: 15,
       favorite: true,
-      tags: ['spiritual', 'cosmic', 'night'],
+      tags: ['romantic', 'peaceful', 'night'],
       difficulty: 'easy',
     },
     {
       id: 4,
-      title: 'Rune Carving Workshop',
-      description: 'Learn the ancient art of binding magic into sacred symbols',
+      title: 'Art Workshop',
+      description: 'Create something beautiful together in a pottery or painting class',
       type: 'indoor',
-      location: 'Artisan Hall',
+      location: 'Art Center',
       votes: 6,
       favorite: false,
-      tags: ['educational', 'crafts', 'magic'],
+      tags: ['creative', 'artistic', 'hands-on'],
       difficulty: 'hard',
     },
     {
       id: 5,
-      title: 'Fey Picnic',
-      description: 'Share enchanted treats in a hidden glen with woodland creatures',
+      title: 'Picnic Adventure',
+      description: 'Pack your favorite foods and find a beautiful spot to relax',
       type: 'outdoor',
-      location: 'Whispering Glade',
+      location: 'Riverside Park',
       votes: 10,
       favorite: true,
-      tags: ['whimsical', 'nature', 'food'],
+      tags: ['casual', 'nature', 'food'],
       difficulty: 'easy',
     },
     {
       id: 6,
-      title: 'Crystal Ball Reading',
-      description: 'Peer into the mists of time and divine your shared destiny',
+      title: 'Wine Tasting',
+      description: 'Discover new flavors and learn about wine pairing together',
       type: 'indoor',
-      location: 'Seer\'s Tower',
+      location: 'Local Winery',
       votes: 7,
       favorite: false,
-      tags: ['mystical', 'spiritual', 'cozy'],
+      tags: ['sophisticated', 'tasting', 'cozy'],
       difficulty: 'medium',
     },
   ]
@@ -125,103 +126,93 @@ export function DateIdeasPage() {
   }
 
   return (
-    <div className=" mx-auto p-6 space-y-6 bg-[#DFF0D0] min-h-screen">
+    <div className=" mx-auto p-4 space-y-4 bg-[#DFF0D0] min-h-screen">
       {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold text-[#d3e6dc] flex items-center gap-2 font-cinzel">
-            <Calendar className="h-8 w-8 text-[#3fffa1] drop-shadow-[0_0_6px_rgba(62,255,161,0.4)]" />
-            Enchanted Dates
-          </h1>
-          <p className="text-[#d3e6dc]/80 mt-1 font-inter">Plan mystical encounters and magical adventures together</p>
-        </div>
+      <div className="flex items-center justify-end">
         <Button 
           onClick={() => setShowForm(!showForm)}
-          className="bg-[#3fffa1] hover:bg-[#3fffa1]/90 text-[#0b0f0c] font-bold hover:shadow-[0_0_10px_rgba(62,255,161,0.4)] transition-all"
+          className="bg-[#1B430F] cursor-pointer py-6 text-white hover:bg-[#12350B] hover:text-white rounded-lg transition-all duration-300 group relative overflow-hidden"
         >
           <Plus className="h-4 w-4 mr-2" />
-          Conjure Idea
+          Add Date Idea
         </Button>
       </div>
 
-      {/* Add Date Idea Form */}
-      {showForm && (
-        <Card className="bg-[#121c16] border-[#1e2a22]">
-          <CardHeader>
-            <CardTitle className="text-[#d3e6dc] font-cinzel">Weave a New Enchantment</CardTitle>
-            <CardDescription className="text-[#d3e6dc]/70 font-inter">
-              What mystical experience shall you share next?
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="title" className="text-[#d3e6dc] font-inter">Enchantment Title</Label>
-                <Input
-                  id="title"
-                  placeholder="Name your mystical experience"
-                  value={title}
-                  onChange={(e) => setTitle(e.target.value)}
-                  className="bg-[#0b0f0c] border-[#1e2a22] text-[#d3e6dc] focus:ring-[#3fffa1] focus:border-[#3fffa1]"
-                />
-              </div>
-              
-              <div className="space-y-2">
-                <Label htmlFor="type" className="text-[#d3e6dc] font-inter">Type</Label>
-                <Select value={type} onValueChange={setType}>
-                  <SelectTrigger className="bg-[#0b0f0c] border-[#1e2a22] text-[#d3e6dc]">
-                    <SelectValue placeholder="Select realm" />
-                  </SelectTrigger>
-                  <SelectContent className="bg-[#121c16] border-[#1e2a22] text-[#d3e6dc]">
-                    <SelectItem value="indoor" className="hover:bg-[#1e2a22]">Sanctum (Indoor)</SelectItem>
-                    <SelectItem value="outdoor" className="hover:bg-[#1e2a22]">Wilds (Outdoor)</SelectItem>
-                    <SelectItem value="virtual" className="hover:bg-[#1e2a22]">Astral (Virtual)</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
-            
+      {/* Add Date Idea Form Modal */}
+      <ResponsiveModal
+        isOpen={showForm}
+        onClose={() => setShowForm(false)}
+        title="Create New Date Idea"
+        description="What would you like to do together?"
+      >
+        <div className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="location" className="text-[#d3e6dc] font-inter">Sacred Site</Label>
+              <Label htmlFor="title" className="text-[#d3e6dc] font-inter">Date Title</Label>
               <Input
-                id="location"
-                placeholder="Where does the magic happen?"
-                value={location}
-                onChange={(e) => setLocation(e.target.value)}
+                id="title"
+                placeholder="Name your date idea"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
                 className="bg-[#0b0f0c] border-[#1e2a22] text-[#d3e6dc] focus:ring-[#3fffa1] focus:border-[#3fffa1]"
               />
             </div>
             
             <div className="space-y-2">
-              <Label htmlFor="description" className="text-[#d3e6dc] font-inter">Incantation</Label>
-              <Textarea
-                id="description"
-                placeholder="Describe the mystical experience..."
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                rows={3}
-                className="bg-[#0b0f0c] border-[#1e2a22] text-[#d3e6dc] focus:ring-[#3fffa1] focus:border-[#3fffa1]"
-              />
+              <Label htmlFor="type" className="text-[#d3e6dc] font-inter">Type</Label>
+              <Select value={type} onValueChange={setType}>
+                <SelectTrigger className="bg-[#0b0f0c] border-[#1e2a22] text-[#d3e6dc]">
+                  <SelectValue placeholder="Select type" />
+                </SelectTrigger>
+                <SelectContent className="bg-[#121c16] border-[#1e2a22] text-[#d3e6dc]">
+                  <SelectItem value="indoor" className="hover:bg-[#1e2a22]">Indoor</SelectItem>
+                  <SelectItem value="outdoor" className="hover:bg-[#1e2a22]">Outdoor</SelectItem>
+                  <SelectItem value="virtual" className="hover:bg-[#1e2a22]">Virtual</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
-            
-            <div className="flex space-x-2">
-              <Button 
-                onClick={handleSubmit}
-                className="bg-[#3fffa1] hover:bg-[#3fffa1]/90 text-[#0b0f0c] font-bold hover:shadow-[0_0_10px_rgba(62,255,161,0.4)] transition-all"
-              >
-                Cast Spell
-              </Button>
-              <Button 
-                variant="outline" 
-                onClick={() => setShowForm(false)}
-                className="border-[#1e2a22] text-[#d3e6dc] hover:bg-[#1e2a22] hover:text-[#3fffa1]"
-              >
-                Banish
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
-      )}
+          </div>
+          
+          <div className="space-y-2">
+            <Label htmlFor="location" className="text-[#d3e6dc] font-inter">Location</Label>
+            <Input
+              id="location"
+              placeholder="Where will this happen?"
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              className="bg-[#0b0f0c] border-[#1e2a22] text-[#d3e6dc] focus:ring-[#3fffa1] focus:border-[#3fffa1]"
+            />
+          </div>
+          
+          <div className="space-y-2">
+            <Label htmlFor="description" className="text-[#d3e6dc] font-inter">Description</Label>
+            <Textarea
+              id="description"
+              placeholder="Describe your date idea..."
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              rows={3}
+              className="bg-[#0b0f0c] border-[#1e2a22] text-[#d3e6dc] focus:ring-[#3fffa1] focus:border-[#3fffa1]"
+            />
+          </div>
+          
+          <div className="flex space-x-2">
+            <Button 
+              onClick={handleSubmit}
+              className="bg-[#3fffa1] hover:bg-[#3fffa1]/90 text-[#0b0f0c] font-bold hover:shadow-[0_0_10px_rgba(62,255,161,0.4)] transition-all"
+            >
+              Add Idea
+            </Button>
+            <Button 
+              variant="outline" 
+              onClick={() => setShowForm(false)}
+              className="border-[#1e2a22] text-[#d3e6dc] hover:bg-[#1e2a22] hover:text-[#3fffa1]"
+            >
+              Cancel
+            </Button>
+          </div>
+        </div>
+      </ResponsiveModal>
 
       {/* Filter Tabs */}
       <Tabs value={filter} onValueChange={setFilter} className="w-full">
@@ -230,7 +221,7 @@ export function DateIdeasPage() {
             value="all" 
             className="text-[#d3e6dc] data-[state=active]:bg-[#1e2a22] data-[state=active]:text-[#3fffa1] data-[state=active]:shadow-[0_0_6px_rgba(62,255,161,0.3)]"
           >
-            All Spells
+            All Ideas
           </TabsTrigger>
           <TabsTrigger 
             value="favorites" 
@@ -243,19 +234,19 @@ export function DateIdeasPage() {
             value="indoor" 
             className="text-[#d3e6dc] data-[state=active]:bg-[#1e2a22] data-[state=active]:text-[#3fffa1] data-[state=active]:shadow-[0_0_6px_rgba(62,255,161,0.3)]"
           >
-            Sanctum
+            Indoor
           </TabsTrigger>
           <TabsTrigger 
             value="outdoor" 
             className="text-[#d3e6dc] data-[state=active]:bg-[#1e2a22] data-[state=active]:text-[#3fffa1] data-[state=active]:shadow-[0_0_6px_rgba(62,255,161,0.3)]"
           >
-            Wilds
+            Outdoor
           </TabsTrigger>
           <TabsTrigger 
             value="virtual" 
             className="text-[#d3e6dc] data-[state=active]:bg-[#1e2a22] data-[state=active]:text-[#3fffa1] data-[state=active]:shadow-[0_0_6px_rgba(62,255,161,0.3)]"
           >
-            Astral
+            Virtual
           </TabsTrigger>
         </TabsList>
 
@@ -264,7 +255,7 @@ export function DateIdeasPage() {
             {filteredIdeas.map((idea) => (
               <Card 
                 key={idea.id} 
-                className="bg-[#121c16] border-[#1e2a22] hover:shadow-[0_0_12px_rgba(62,255,161,0.2)] transition-all group hover:translate-y-[-2px]"
+                className="bg-white w-full rounded-3xl p-3 shadow-xl relative overflow-hidden transition-all duration-500"
               >
                 <CardHeader>
                   <div className="flex items-start justify-between">
@@ -332,16 +323,16 @@ export function DateIdeasPage() {
       </Tabs>
 
       {filteredIdeas.length === 0 && (
-        <Card className="bg-[#121c16] border-[#1e2a22]">
+        <Card className="bg-white w-full rounded-3xl p-3 shadow-xl relative overflow-hidden transition-all duration-500">
           <CardContent className="text-center py-12">
             <Calendar className="h-12 w-12 text-[#3fffa1]/40 mx-auto mb-4 drop-shadow-[0_0_6px_rgba(62,255,161,0.2)]" />
-            <h3 className="text-lg font-medium text-[#d3e6dc] mb-2 font-cinzel">No enchantments woven yet</h3>
-            <p className="text-[#d3e6dc]/70 mb-4 font-inter">Begin crafting your mystical experiences together.</p>
+            <h3 className="text-lg font-medium text-[#d3e6dc] mb-2 font-cinzel">No date ideas yet</h3>
+            <p className="text-[#d3e6dc]/70 mb-4 font-inter">Start creating memorable experiences together.</p>
             <Button 
               onClick={() => setShowForm(true)}
               className="bg-[#3fffa1] hover:bg-[#3fffa1]/90 text-[#0b0f0c] font-bold hover:shadow-[0_0_10px_rgba(62,255,161,0.4)]"
             >
-              Weave Your First Spell
+              Add Your First Date Idea
             </Button>
           </CardContent>
         </Card>

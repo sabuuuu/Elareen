@@ -8,6 +8,7 @@ import { Label } from '@/components/ui/label'
 import { Slider } from '@/components/ui/slider'
 import { Badge } from '@/components/ui/badge'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import ResponsiveModal from '@/components/ui/reusable-modal'
 
 export function ComplaintsPage() {
   const [showForm, setShowForm] = useState(false)
@@ -97,145 +98,140 @@ export function ComplaintsPage() {
   }
 
   return (
-    <div className="bg-[#DFF0D0] mx-auto p-6 space-y-6">
+    <div className="bg-[#DFF0D0] mx-auto p-4 space-y-4">
       {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-2">
-            <MessageSquare className="h-8 w-8 text-primary" />
-            Relationship Complaints
-          </h1>
-          <p className="text-gray-600 mt-1">A lighthearted way to address relationship hiccups</p>
-        </div>
+      <div className="flex items-center justify-end">
         <Button 
           onClick={() => setShowForm(!showForm)}
-          className="bg-primary hover:bg-primary/90"
+          className="bg-[#1B430F] cursor-pointer py-6 text-white hover:bg-[#12350B] hover:text-white rounded-lg transition-all duration-300 group relative overflow-hidden"
         >
           <Plus className="h-4 w-4 mr-2" />
           Add Complaint
         </Button>
       </div>
 
-      {/* Complaint Form */}
-      {showForm && (
-        <Card>
-          <CardHeader>
-            <CardTitle>File a New Complaint</CardTitle>
-            <CardDescription>What's bugging you? Let's track it with humor!</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="category">Category</Label>
-              <Select value={category} onValueChange={setCategory}>
-                <SelectTrigger>
-                  <SelectValue placeholder="What type of complaint is this?" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="Chores">Chores</SelectItem>
-                  <SelectItem value="Communication">Communication</SelectItem>
-                  <SelectItem value="Quality Time">Quality Time</SelectItem>
-                  <SelectItem value="Habits">Habits</SelectItem>
-                  <SelectItem value="Other">Other</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-            
-            <div className="space-y-2">
-              <Label htmlFor="complaint">What happened?</Label>
-              <Textarea
-                id="complaint"
-                placeholder="Describe the issue..."
-                value={complaint}
-                onChange={(e) => setComplaint(e.target.value)}
-                className="min-h-[100px]"
+      {/* Complaint Form Modal */}
+      <ResponsiveModal
+        isOpen={showForm}
+        onClose={() => setShowForm(false)}
+        title="File a New Complaint"
+        description="What's bugging you? Let's track it with humor!"
+      >
+        <div className="space-y-4">
+          <div className="space-y-2">
+            <Label htmlFor="category">Category</Label>
+            <Select value={category} onValueChange={setCategory}>
+              <SelectTrigger>
+                <SelectValue placeholder="What type of complaint is this?" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="Chores">Chores</SelectItem>
+                <SelectItem value="Communication">Communication</SelectItem>
+                <SelectItem value="Quality Time">Quality Time</SelectItem>
+                <SelectItem value="Habits">Habits</SelectItem>
+                <SelectItem value="Other">Other</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+          
+          <div className="space-y-2">
+            <Label htmlFor="complaint">What happened?</Label>
+            <Textarea
+              id="complaint"
+              placeholder="Describe the issue..."
+              value={complaint}
+              onChange={(e) => setComplaint(e.target.value)}
+              className="min-h-[100px]"
+            />
+          </div>
+          
+          <div className="space-y-3">
+            <Label>Mood Level (1-10)</Label>
+            <div className="px-2">
+              <Slider
+                value={moodLevel}
+                onValueChange={setMoodLevel}
+                max={10}
+                min={1}
+                step={1}
+                className="w-full"
               />
-            </div>
-            
-            <div className="space-y-3">
-              <Label>Mood Level (1-10)</Label>
-              <div className="px-2">
-                <Slider
-                  value={moodLevel}
-                  onValueChange={setMoodLevel}
-                  max={10}
-                  min={1}
-                  step={1}
-                  className="w-full"
-                />
-                <div className="flex justify-between text-sm text-gray-500 mt-1">
-                  <span>1 (Very Upset)</span>
-                  <span className={`font-medium ${getMoodColor(moodLevel[0])}`}>
-                    {moodLevel[0]}
-                  </span>
-                  <span>10 (Just Annoyed)</span>
-                </div>
+              <div className="flex justify-between text-sm text-gray-500 mt-1">
+                <span>1 (Very Upset)</span>
+                <span className={`font-medium ${getMoodColor(moodLevel[0])}`}>
+                  {moodLevel[0]}
+                </span>
+                <span>10 (Just Annoyed)</span>
               </div>
             </div>
-            
-            <div className="space-y-2">
-              <Label htmlFor="apology">Suggested Apology/Resolution</Label>
-              <Input
-                id="apology"
-                placeholder="How should they make it up to you?"
-                value={suggestedApology}
-                onChange={(e) => setSuggestedApology(e.target.value)}
-              />
-            </div>
-            
-            <div className="flex space-x-2">
-              <Button 
-                onClick={handleSubmit}
-                className="bg-primary hover:bg-primary/90"
-              >
-                File Complaint
-              </Button>
-              <Button 
-                variant="outline" 
-                onClick={() => setShowForm(false)}
-              >
-                Cancel
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
-      )}
+          </div>
+          
+          <div className="space-y-2">
+            <Label htmlFor="apology">Suggested Apology/Resolution</Label>
+            <Input
+              id="apology"
+              placeholder="How should they make it up to you?"
+              value={suggestedApology}
+              onChange={(e) => setSuggestedApology(e.target.value)}
+            />
+          </div>
+          
+          <div className="flex space-x-2">
+            <Button 
+              onClick={handleSubmit}
+              className="bg-primary hover:bg-primary/90"
+            >
+              File Complaint
+            </Button>
+            <Button 
+              variant="outline" 
+              onClick={() => setShowForm(false)}
+            >
+              Cancel
+            </Button>
+          </div>
+        </div>
+      </ResponsiveModal>
 
       {/* Complaints List */}
-      <div className="space-y-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {complaints.map((item) => (
-          <Card key={item.id} className="hover:shadow-md transition-shadow">
+          <Card key={item.id} className="bg-white w-full rounded-3xl shadow-xl relative overflow-hidden transition-all duration-500">
             <CardHeader>
               <div className="flex items-start justify-between">
                 <div className="flex-1">
-                  <CardTitle className="text-lg flex items-center gap-2">
+                  <CardTitle className="text-lg text-[#1B430F] flex items-center">
                     {item.title}
+                  </CardTitle>
+                  <CardDescription className='text-xs mt-1 flex items-center justify-between'>
+                    {item.category} • {new Date(item.date).toLocaleDateString()}
                     <Badge className={getStatusColor(item.status)}>
                       {getStatusIcon(item.status)}
                       <span className="ml-1 capitalize">{item.status.replace('-', ' ')}</span>
                     </Badge>
-                  </CardTitle>
-                  <CardDescription>
-                    {item.category} • {new Date(item.date).toLocaleDateString()}
                   </CardDescription>
                 </div>
-                <div className="text-right">
-                  <div className="text-sm text-gray-600">Mood Level</div>
-                  <div className={`text-2xl font-bold ${getMoodColor(item.moodLevel)}`}>
+                <div className="flex mt-2">
+                  <div className="text-xs text-gray-600 mr-2">Mood Level</div>
+                  <div className={`text-xs font-bold ${getMoodColor(item.moodLevel)}`}>
                     {item.moodLevel}/10
                   </div>
                 </div>
+              </div>
+              <div >
+
               </div>
             </CardHeader>
             <CardContent>
               <p className="text-gray-700 mb-4">{item.content}</p>
               
-              <div className="bg-gray-50 rounded-lg p-3 mb-4">
+              <div className="bg-[#C6E0B8]/50 rounded-lg p-3 mb-4 text-sm">
                 <h4 className="font-medium text-gray-900 mb-1">Suggested Apology:</h4>
                 <p className="text-gray-700">{item.suggestedApology}</p>
               </div>
               
               {item.resolution && (
-                <div className="bg-green-50 rounded-lg p-3">
+                <div className="bg-[#BBDAAA]/80 rounded-lg p-3 text-sm">
                   <h4 className="font-medium text-green-900 mb-1">Resolution:</h4>
                   <p className="text-green-700">{item.resolution}</p>
                 </div>
@@ -257,14 +253,14 @@ export function ComplaintsPage() {
       </div>
 
       {complaints.length === 0 && (
-        <Card>
+        <Card className="w-full bg-[#1B430F] rounded-3xl p-2 shadow-xl relative overflow-hidden transition-all duration-500">
           <CardContent className="text-center py-12">
             <MessageSquare className="h-12 w-12 text-gray-400 mx-auto mb-4" />
             <h3 className="text-lg font-medium text-gray-900 mb-2">No complaints yet</h3>
             <p className="text-gray-600 mb-4">Everything's perfect! Or file your first complaint to get started.</p>
             <Button 
               onClick={() => setShowForm(true)}
-              className="bg-primary hover:bg-primary/90"
+             className="cursor-pointer bg-[#81BC62] hover:bg-[#8DC270]/90 text-[#0A1005] rounded-lg py-5 hover:shadow-[0_0_10px_rgba(62,255,161,0.4)]"
             >
               File Your First Complaint
             </Button>

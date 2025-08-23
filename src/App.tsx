@@ -22,11 +22,11 @@ function PublicRoute({ children, isAuthenticated, isLoading }: { children: React
   if (isLoading) {
     return <div className="flex items-center justify-center min-h-screen">Loading...</div>
   }
-  
+ 
   if (isAuthenticated) {
     return <Navigate to="/dashboard" replace />
   }
-  
+ 
   return children
 }
 
@@ -89,6 +89,7 @@ function AppContent() {
             </PublicRoute>
           } />
          
+          {/* Updated routes with AppLayout - titles will be automatically determined */}
           <Route path="/setup" element={
             <AuthWrapper>
               <AppLayout>

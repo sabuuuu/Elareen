@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { Badge } from '@/components/ui/badge'
+import ResponsiveModal from '@/components/ui/reusable-modal'
 
 export function MemoriesPage() {
   const [showUploader, setShowUploader] = useState(false)
@@ -82,82 +83,76 @@ export function MemoriesPage() {
   }
 
   return (
-    <div className=" mx-auto p-6 space-y-6 bg-[#DFF0D0] min-h-screen">
+    <div className=" mx-auto p-4 space-y-4 bg-[#DFF0D0] min-h-screen">
       {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold text-[#d3e6dc] flex items-center gap-2 font-cinzel">
-            <Camera className="h-8 w-8 text-[#3fffa1] drop-shadow-[0_0_6px_rgba(62,255,161,0.4)]" />
-            Shared Memories
-          </h1>
-          <p className="text-[#d3e6dc]/80 mt-1 font-inter">Capture and cherish your beautiful moments together</p>
-        </div>
+      <div className="flex items-center justify-end">
         <Button 
           onClick={() => setShowUploader(!showUploader)}
-          className="bg-[#3fffa1] hover:bg-[#3fffa1]/90 text-[#0b0f0c] font-bold hover:shadow-[0_0_10px_rgba(62,255,161,0.4)]"
+          className="bg-[#1B430F] cursor-pointer py-6 text-white hover:bg-[#12350B] hover:text-white rounded-lg transition-all duration-300 group relative overflow-hidden"
         >
           <Plus className="h-4 w-4 mr-2" />
           Add Memory
         </Button>
       </div>
 
-      {/* Memory Upload Form */}
-      {showUploader && (
-        <Card className="p-6 bg-[#121c16] border border-[#1e2a22] rounded-2xl">
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-[#d3e6dc] font-cinzel">Add a New Memory</h3>
-            
-            <div className="space-y-2">
-              <Label htmlFor="title" className="text-[#d3e6dc] font-inter">Memory Title</Label>
-              <Input
-                id="title"
-                placeholder="What made this moment special?"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                className="bg-[#0b0f0c] border-[#1e2a22] text-[#d3e6dc] focus:border-[#3fffa1] focus:ring-[#3fffa1]/50"
-              />
-            </div>
-            
-            <div className="space-y-2">
-              <Label htmlFor="description" className="text-[#d3e6dc] font-inter">Description</Label>
-              <Textarea
-                id="description"
-                placeholder="Tell the story behind this memory..."
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                rows={3}
-                className="bg-[#0b0f0c] border-[#1e2a22] text-[#d3e6dc] focus:border-[#3fffa1] focus:ring-[#3fffa1]/50"
-              />
-            </div>
-            
-            <ImageUploader onUpload={handleUpload} />
-            
-            <div className="flex space-x-2">
-              <Button 
-                onClick={handleSaveMemory}
-                disabled={!title.trim() || !selectedFile}
-                className="bg-[#3fffa1] hover:bg-[#3fffa1]/90 text-[#0b0f0c] font-bold hover:shadow-[0_0_10px_rgba(62,255,161,0.4)]"
-              >
-                Save Memory
-              </Button>
-              <Button 
-                variant="outline" 
-                onClick={() => setShowUploader(false)}
-                className="border-[#3fffa1] text-[#3fffa1] hover:bg-[#121c16] hover:text-[#3fffa1] hover:shadow-[0_0_6px_rgba(62,255,161,0.3)]"
-              >
-                Cancel
-              </Button>
-            </div>
+      {/* Memory Upload Form Modal */}
+      <ResponsiveModal
+        isOpen={showUploader}
+        onClose={() => setShowUploader(false)}
+        title="Add a New Memory"
+        description="Capture a special moment to treasure forever"
+      >
+        <div className="space-y-4">
+          <div className="space-y-2">
+            <Label htmlFor="title" className="text-[#d3e6dc] font-inter">Memory Title</Label>
+            <Input
+              id="title"
+              placeholder="What made this moment special?"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              className="bg-[#0b0f0c] border-[#1e2a22] text-[#d3e6dc] focus:border-[#3fffa1] focus:ring-[#3fffa1]/50"
+            />
           </div>
-        </Card>
-      )}
+          
+          <div className="space-y-2">
+            <Label htmlFor="description" className="text-[#d3e6dc] font-inter">Description</Label>
+            <Textarea
+              id="description"
+              placeholder="Tell the story behind this memory..."
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              rows={3}
+              className="bg-[#0b0f0c] border-[#1e2a22] text-[#d3e6dc] focus:border-[#3fffa1] focus:ring-[#3fffa1]/50"
+            />
+          </div>
+          
+          <ImageUploader onUpload={handleUpload} />
+          
+          <div className="flex space-x-2">
+            <Button 
+              onClick={handleSaveMemory}
+              disabled={!title.trim() || !selectedFile}
+              className="bg-[#3fffa1] hover:bg-[#3fffa1]/90 text-[#0b0f0c] font-bold hover:shadow-[0_0_10px_rgba(62,255,161,0.4)]"
+            >
+              Save Memory
+            </Button>
+            <Button 
+              variant="outline" 
+              onClick={() => setShowUploader(false)}
+              className="border-[#3fffa1] text-[#3fffa1] hover:bg-[#121c16] hover:text-[#3fffa1] hover:shadow-[0_0_6px_rgba(62,255,161,0.3)]"
+            >
+              Cancel
+            </Button>
+          </div>
+        </div>
+      </ResponsiveModal>
 
       {/* Memories Gallery */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {memories.map((memory) => (
           <Card 
             key={memory.id} 
-            className="overflow-hidden bg-[#121c16] border border-[#1e2a22] rounded-2xl hover:shadow-[0_0_15px_rgba(62,255,161,0.2)] transition-all duration-300 group"
+            className="bg-white w-full rounded-3xl shadow-xl relative overflow-hidden transition-all duration-500"
           >
             <div className="relative">
               <img
@@ -188,11 +183,11 @@ export function MemoriesPage() {
               </div>
             </div>
             <CardContent className="p-4">
-              <h3 className="font-semibold text-lg mb-2 flex items-center gap-2 text-[#d3e6dc] font-cinzel">
+              <h3 className="font-semibold text-lg mb-2 flex items-center gap-2 text-[#1B430F] font-cinzel">
                 {memory.title}
                 <Heart className="h-4 w-4 text-[#e6c96b] fill-current drop-shadow-[0_0_4px_rgba(230,201,107,0.5)]" />
               </h3>
-              <p className="text-[#d3e6dc]/80 text-sm mb-3 line-clamp-2 font-inter">
+              <p className="text-gray-400 text-sm mb-3 line-clamp-2 font-inter">
                 {memory.description}
               </p>
               <div className="flex flex-wrap gap-1">
@@ -211,14 +206,14 @@ export function MemoriesPage() {
       </div>
 
       {memories.length === 0 && (
-        <Card className="bg-[#121c16] border border-[#1e2a22] rounded-2xl">
+        <Card className="w-full bg-[#1B430F] rounded-3xl p-2 shadow-xl relative overflow-hidden transition-all duration-500">
           <CardContent className="text-center py-12">
             <Camera className="h-12 w-12 text-[#3fffa1]/50 mx-auto mb-4 drop-shadow-[0_0_6px_rgba(62,255,161,0.2)]" />
             <h3 className="text-lg font-medium text-[#d3e6dc] mb-2 font-cinzel">No memories yet</h3>
             <p className="text-[#d3e6dc]/80 mb-4 font-inter">Start capturing your beautiful moments together.</p>
             <Button 
               onClick={() => setShowUploader(true)}
-              className="bg-[#3fffa1] hover:bg-[#3fffa1]/90 text-[#0b0f0c] font-bold hover:shadow-[0_0_10px_rgba(62,255,161,0.4)]"
+              className="cursor-pointer bg-[#81BC62] hover:bg-[#8DC270]/90 text-[#0A1005] rounded-lg py-5 hover:shadow-[0_0_10px_rgba(62,255,161,0.4)]"
             >
               Add Your First Memory
             </Button>
